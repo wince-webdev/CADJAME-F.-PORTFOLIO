@@ -30,7 +30,7 @@ export function Hero() {
           </p>
 
           <div className="mt-6 max-w-xl rounded-lg border border-border bg-surface/60 p-4 font-mono text-sm">
-            <span className="text-muted-foreground">$ whoami --role</span>
+            {/* <span className="text-muted-foreground">$ whoami --role</span> */}
             <div className="mt-1">
               <TypingRoles />
             </div>
@@ -54,13 +54,6 @@ export function Hero() {
               className="inline-flex items-center gap-2 rounded-md border border-primary/40 px-5 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
             >
               Me contacter
-            </a>
-            <a
-              href="/portfolio-florentin-cadjame.zip"
-              download
-              className="inline-flex items-center gap-2 rounded-md border border-border bg-surface px-5 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
-            >
-              <FileArchive className="h-4 w-4" /> Télécharger le ZIP
             </a>
             <a
               href={LINKEDIN_URL}
