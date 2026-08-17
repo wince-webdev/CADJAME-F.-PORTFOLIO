@@ -4,13 +4,9 @@ import {
   GraduationCap,
   Network,
   Server,
-  Container,
-  Bug,
+  MonitorCog,
+  ShieldCheck,
   Languages,
-  Music,
-  BookOpen,
-  Trophy,
-  
   Mail,
   Phone,
   MapPin,
@@ -23,62 +19,90 @@ import { CV_URL, LINKEDIN_URL } from "./hero";
 
 const EXPERIENCES = [
   {
-    role: "Ingénieur Système Réseau et Cybersécurité",
-    company: "DOOTRI — Lyon, France",
-    period: "Février 2025 – Août 2025",
+    role: "Ingénieur Systèmes, Réseaux et Cybersécurité",
+    company: "Dootri — Lyon, France",
+    period: "Depuis février 2025",
     groups: [
       {
-        label: "Cybersécurité & Réseau",
+        label: "Sécurité réseau",
         items:
-          "Interconnexion de sites via Fortigate 40F, tunnel IPsec, pentest (capture handshake, wordlist Rockyou, malware Python, détection Yara), tests de vulnérabilité (mots de passe, WPS), routage inter-VLAN statique et dynamique (RIP, OSPF, EIGRP)",
+          "Mise en œuvre et administration de solutions de sécurité réseau (FortiGate 40F, Cisco ASA, pfSense), configuration de tunnels IPsec.",
       },
       {
-        label: "Systèmes",
+        label: "Cybersécurité",
         items:
-          "Windows Server (AD DS, GPO, DNS, SCCM, sauvegarde), TrueNAS (stockage), Zabbix (supervision), déploiement et administration de VM (VMware, Proxmox)",
+          "Tests d'intrusion en environnement contrôlé, inspection des trafics réseau (Suricata / pfSense — IDS/IPS), collecte et analyse de données avec Splunk.",
       },
-      { label: "DevOps & Conteneurisation", items: "Docker, Docker Compose, Kubernetes" },
-      { label: "Normes & Référentiels", items: "ISO 22301 (BCMS), ISO 27001, ISO 27002" },
+      {
+        label: "Architecture réseau",
+        items:
+          "Conception et administration d'architectures réseau avec routage inter-VLAN, routage statique et dynamique (RIP, OSPF, EIGRP).",
+      },
+      {
+        label: "Systèmes Windows",
+        items:
+          "Windows Server : Active Directory (AD DS), stratégies de groupe (GPO), services DNS, déploiement et supervision via SCCM, clusters de basculement et équilibrage de charge (HA sur Windows Server 2022).",
+      },
+      {
+        label: "Stockage, supervision & sauvegarde",
+        items: "TrueNAS, Zabbix et Veeam Backup.",
+      },
+      {
+        label: "Virtualisation",
+        items:
+          "Installation, configuration et administration d'environnements VMware, Hyper-V et Proxmox : machines virtuelles, réseaux virtuels et haute disponibilité.",
+      },
+      {
+        label: "Cloud",
+        items: "Administration Microsoft 365, Entra ID (Azure AD), virtualisation et sauvegarde cloud (notions).",
+      },
     ],
   },
   {
     role: "Responsable Infrastructures Réseaux et Systèmes",
-    company: "3MAUC",
+    company: "3MAUC — Cotonou, Bénin",
     period: "Octobre 2023 – Octobre 2024",
     groups: [
       {
         label: "Systèmes",
         items:
-          "Administration Windows & Linux, gestion des comptes et droits d'accès (Active Directory)",
+          "Administration Windows & Linux : installation, configuration, mises à jour, gestion des comptes et droits d'accès (Active Directory).",
       },
-      {
-        label: "Supervision & Déploiement",
-        items: "Nagios, GPO, SCCM, scripts automatisés",
-      },
-      { label: "Virtualisation", items: "VMware, Hyper-V, VirtualBox" },
+      { label: "Virtualisation", items: "Gestion d'environnements virtualisés VMware et Hyper-V." },
       {
         label: "Réseaux",
         items:
-          "Switches, routeurs, firewalls, VLAN, routage statique/dynamique (OSPF, RIP, EIGRP), interconnexion et sécurisation de sites distants (VPN site-to-site)",
+          "Configuration et maintenance des switches, routeurs et firewalls, mise en place de VLAN, routage statique et dynamique (OSPF, RIP, EIGRP).",
+      },
+      {
+        label: "Interconnexion & sécurité",
+        items:
+          "Connectivité entre sites distants, configuration de VPN site-to-site et sécurisation des communications.",
       },
     ],
   },
   {
-    role: "Administrateur Système et Réseau",
-    company: "Set Asset",
-    period: "Décembre 2019 – Septembre 2022",
+    role: "Administrateur Systèmes et Réseaux",
+    company: "SET ASSET — Bruxelles / Cotonou, Bénin",
+    period: "Décembre 2019 – Décembre 2022",
     groups: [
-      { label: "Sécurité", items: "Stratégies de sécurité (GPO, antivirus, audit)" },
-      { label: "Services", items: "DNS, DHCP, FTP, adressage IP fixe et dynamique" },
-      { label: "Virtualisation", items: "VMware, Hyper-V, VirtualBox" },
+      {
+        label: "Sécurité & administration système",
+        items:
+          "Stratégies de sécurité (GPO, antivirus, audit), gestion des services DNS, DHCP, FTP et attribution d'adresses IP fixes/dynamiques.",
+      },
+      {
+        label: "Virtualisation",
+        items: "Déploiement et gestion d'environnements VMware et Hyper-V (serveurs et postes de travail).",
+      },
       {
         label: "Réseaux",
         items:
-          "Switches, routeurs, firewalls, VLAN, routage OSPF/RIP, supervision du trafic avec Wireshark",
+          "Configuration et maintenance des switches, routeurs et firewalls, VLAN, routage statique et dynamique (OSPF, RIP), surveillance du trafic avec Wireshark.",
       },
       {
-        label: "Web",
-        items: "Création et mise en ligne du site vitrine SETASSET (afroassets.com)",
+        label: "Développement web",
+        items: "Création et mise en ligne du site vitrine de SETASSET (afroassets.com).",
       },
     ],
   },
@@ -86,59 +110,59 @@ const EXPERIENCES = [
 
 const FORMATIONS = [
   {
-    title: "Mastère Cybersécurité",
-    school: "LiveCampus — Titre RNCP Niveau 7 (Bac+5)",
-    period: "Octobre 2025 – Novembre 2026",
+    title: "Master Ingénieur Systèmes, Réseaux et Cybersécurité",
+    school: "Institut F2I — Paris",
+    period: "2026",
     detail:
-      "Audit et pentest, forensic, reverse engineering, cryptographie avancée, DevSecOps, Security by Design, CI/CD sécurisé, Cloud & infrastructures hybrides (Docker, Kubernetes, Ansible, Terraform), SIEM (Splunk, Wazuh, ELK), analyse de risques, gouvernance et réponse aux incidents.",
+      "Infrastructures systèmes et réseaux, sécurisation des systèmes d'information, supervision et haute disponibilité.",
   },
   {
-    title: "Master 1 Ingénieur Système Réseau et Cybersécurité",
-    school: "Institut Européen F2I — Paris",
-    period: "Octobre 2024 – Septembre 2025",
-    detail: "Infrastructures, sécurité des systèmes d'information et administration réseau.",
-  },
-  {
-    title: "Licence Professionnelle Informatique Industrielle et Maintenance",
-    school: "Institut Cerco — Abidjan",
-    period: "Septembre 2014 – Juin 2015",
-    detail: "Maintenance informatique, systèmes embarqués et fondamentaux réseaux.",
+    title: "Master Ingénieur Systèmes, Réseaux",
+    school: "Institut Cerco Abidjan — Abidjan",
+    period: "2019",
+    detail: "Fondamentaux réseaux, administration systèmes et maintenance informatique.",
   },
 ];
 
 const SKILLS = [
   {
-    icon: Network,
-    title: "Réseau informatique",
+    icon: Server,
+    title: "Systèmes",
     level: 92,
+    items: ["Windows Server", "Active Directory", "Linux Ubuntu/Debian", "DNS / DHCP", "GPO", "HA"],
+  },
+  {
+    icon: Network,
+    title: "Réseau",
+    level: 90,
+    items: ["TCP/IP", "VLAN", "VPN", "pfSense", "Routage / NAT", "Cisco", "HA"],
+  },
+  {
+    icon: MonitorCog,
+    title: "Virtualisation",
+    level: 88,
     items: [
-      "Cisco",
-      "VPN / IPsec",
-      "Switches, routeurs, firewalls",
-      "TCP/IP, DNS, DHCP",
-      "Fortinet",
+      "Proxmox VE",
+      "Hyper-V",
+      "VMware ESXi",
+      "Gestion de VM",
+      "Snapshots",
+      "Stockage virtualisé",
+      "HA",
     ],
   },
   {
-    icon: Server,
-    title: "Systèmes",
-    level: 88,
-    items: ["Windows Server", "Linux", "SCCM", "Virtualisation", "TrueNAS"],
-  },
-  {
-    icon: Container,
-    title: "Conteneurisation",
-    level: 75,
-    items: ["Docker", "Docker Compose", "Kubernetes"],
-  },
-  {
-    icon: Bug,
-    title: "Pentesting",
-    level: 82,
-    items: ["Nmap", "Metasploit", "Exploitation (vsftpd backdoor)", "Handshake WPA"],
+    icon: ShieldCheck,
+    title: "Cybersécurité",
+    level: 85,
+    items: [
+      "Suricata / pfSense (IDS, IPS)",
+      "Splunk (collecte & corrélation)",
+      "EDR — Windows Defender",
+      "Veeam Backup — PRA/PCA",
+    ],
   },
 ];
-
 
 export function About() {
   return (
@@ -147,22 +171,26 @@ export function About() {
       <div className="grid gap-8 md:grid-cols-[1.5fr_1fr]">
         <Reveal>
           <p className="text-base leading-relaxed text-muted-foreground">
-            Ingénieur systèmes, réseaux et cybersécurité avec plusieurs années d'expérience en
-            administration d'infrastructures, sécurisation de réseaux et tests d'intrusion. Formé
-            aux référentiels <span className="text-foreground">ISO 27001/27002/22301</span>, à la
-            cybersécurité offensive et défensive, au DevSecOps et au Cloud. Passionné par la
-            protection des systèmes d'information et la réponse aux incidents.
+            Ingénieur Systèmes, Réseaux et Cybersécurité, je participe activement à la{" "}
+            <span className="text-foreground">conception</span>, l'
+            <span className="text-foreground">exploitation</span> et la{" "}
+            <span className="text-foreground">sécurisation</span> des infrastructures informatiques :
+            architectures réseau et VLAN, administration Windows Server et Linux, virtualisation et
+            haute disponibilité, supervision, sauvegarde et détection des menaces.
           </p>
         </Reveal>
         <Reveal delay={120}>
           <ul className="rounded-lg border border-border bg-card p-5 font-mono text-sm">
             {[
-              ["localisation", "Paris 75016"],
-              ["mobilité", "France entière"],
+              ["localisation", "Bobigny 93000"],
+              ["mobilité", "Île-de-France / France"],
               ["permis", "B — véhiculé"],
-              ["statut", "Mastère Cybersécurité en cours"],
+              ["disponibilité", "à l'écoute d'opportunités"],
             ].map(([k, v]) => (
-              <li key={k} className="flex justify-between gap-4 border-b border-border/60 py-2 last:border-0">
+              <li
+                key={k}
+                className="flex justify-between gap-4 border-b border-border/60 py-2 last:border-0"
+              >
                 <span className="text-muted-foreground">{k}</span>
                 <span className="text-primary">{v}</span>
               </li>
@@ -210,8 +238,8 @@ export function Experiences() {
 export function Formations() {
   return (
     <section id="formations" className="mx-auto max-w-6xl px-5 py-24">
-      <SectionTitle index="03." title="Formations" />
-      <div className="grid gap-5 md:grid-cols-3">
+      <SectionTitle index="03." title="Études & Diplômes" />
+      <div className="grid gap-5 md:grid-cols-2">
         {FORMATIONS.map((f, i) => (
           <Reveal key={f.title} delay={i * 90}>
             <article className="h-full rounded-xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-accent/40">
@@ -231,7 +259,7 @@ export function Formations() {
 export function Skills() {
   return (
     <section id="competences" className="mx-auto max-w-6xl px-5 py-24">
-      <SectionTitle index="04." title="Compétences" />
+      <SectionTitle index="04." title="Compétences techniques" />
       <div className="grid gap-5 sm:grid-cols-2">
         {SKILLS.map((s, i) => (
           <Reveal key={s.title} delay={i * 90}>
@@ -264,54 +292,32 @@ export function Skills() {
         ))}
       </div>
 
-      <div className="mt-8 grid gap-5 sm:grid-cols-2">
+      <div className="mt-8">
         <Reveal>
-          <div className="rounded-xl border border-border bg-card p-6">
+          <div className="rounded-xl border border-border bg-card p-6 sm:max-w-md">
             <h3 className="flex items-center gap-2 font-semibold">
               <Languages className="h-5 w-5 text-primary" /> Langues
             </h3>
             {[
-              { label: "Français", level: "soutenu — langue maternelle", dots: 5 },
-              { label: "Anglais", level: "B1 — intermédiaire", dots: 3 },
+              { label: "Français", level: "100 %", value: 100 },
+              { label: "Anglais", level: "40 %", value: 40 },
             ].map((lang) => (
-              <div key={lang.label} className="mt-4 first:mt-4">
+              <div key={lang.label} className="mt-4">
                 <div className="flex items-center justify-between text-sm">
                   <span>{lang.label}</span>
                   <span className="font-mono text-xs text-accent">{lang.level}</span>
                 </div>
-                <div className="mt-2 flex gap-1.5">
-                  {[1, 2, 3, 4, 5].map((n) => (
-                    <span
-                      key={n}
-                      className={`h-1.5 flex-1 rounded-full ${n <= lang.dots ? "bg-primary" : "bg-muted"}`}
-                    />
-                  ))}
+                <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-muted">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-primary to-accent"
+                    style={{ width: `${lang.value}%` }}
+                  />
                 </div>
               </div>
             ))}
           </div>
         </Reveal>
-        <Reveal delay={100}>
-          <div className="rounded-xl border border-border bg-card p-6">
-            <h3 className="font-semibold">Centres d'intérêt</h3>
-            <ul className="mt-4 flex flex-wrap gap-3 text-sm text-muted-foreground">
-              {[
-                { icon: Music, label: "Musique" },
-                { icon: Trophy, label: "Football" },
-                { icon: BookOpen, label: "Lecture" },
-              ].map((it) => (
-                <li
-                  key={it.label}
-                  className="inline-flex items-center gap-2 rounded-md border border-border bg-surface px-3 py-1.5"
-                >
-                  <it.icon className="h-4 w-4 text-primary" /> {it.label}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Reveal>
       </div>
-
     </section>
   );
 }
@@ -404,11 +410,17 @@ export function Contact() {
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <MapPin className="h-4 w-4 text-primary" /> Paris (75016) — mobilité France entière
+                <MapPin className="h-4 w-4 text-primary" /> 22 avenue Paul Vaillant Couturier, 93000
+                Bobigny
               </li>
               <li className="flex items-center gap-3">
                 <Linkedin className="h-4 w-4 text-primary" />
-                <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" className="hover:text-primary">
+                <a
+                  href={LINKEDIN_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-primary"
+                >
                   Profil LinkedIn
                 </a>
               </li>
@@ -431,9 +443,15 @@ export function Footer() {
   return (
     <footer className="border-t border-border py-8">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 font-mono text-xs text-muted-foreground">
-        <p>© {new Date().getFullYear()} Florentin CADJAME — Tous droits réservés.</p>
+        <p>© {new Date().getFullYear()} Florentin CADJAME — tous droits réservés.</p>
         <div className="flex items-center gap-3">
-          <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="hover:text-primary">
+          <a
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            className="hover:text-primary"
+          >
             <Linkedin className="h-4 w-4" />
           </a>
           <a href="mailto:fcadjame@gmail.com" aria-label="Email" className="hover:text-primary">

@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 
-const ROLES = ["Pentester", "Administrateur Systèmes", "Ingénieur Réseau", "Blue Team / DevSecOps"];
+const ROLES = [
+  "Ingénieur Systèmes & Réseaux",
+  "Administrateur Windows Server",
+  "Expert Virtualisation (Proxmox, VMware)",
+  "Cybersécurité — IDS/IPS, SIEM, EDR",
+];
 
 export function TypingRoles() {
   const [roleIndex, setRoleIndex] = useState(0);

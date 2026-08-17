@@ -1,67 +1,66 @@
-import { ExternalLink, Globe, Network, ShieldCheck, Activity, Server } from "lucide-react";
+import { ExternalLink, Globe, Network, ShieldCheck, Activity, Server, HardDrive } from "lucide-react";
 import { Reveal, SectionTitle } from "@/components/reveal";
 
 /**
  * Pour ajouter une réalisation : copiez un bloc ci-dessous et modifiez-le.
- * - `link` est optionnel (mettez-le à undefined si le projet n'a pas de site).
- * - Aucune image n'est nécessaire.
+ * `link` est optionnel (supprimez la ligne si le projet n'a pas de site).
  */
 const PROJECTS = [
   {
-    icon: Globe,
-    title: "Site vitrine SETASSET — afroassets.com",
-    context: "Set Asset",
+    icon: HardDrive,
+    title: "Architecture de stockage distribué sécurisé (Ceph / Proxmox VE)",
+    context: "Projet personnel — en cours",
     description:
-      "Conception, mise en ligne et maintenance du site vitrine de l'entreprise : hébergement, nom de domaine, sécurisation HTTPS et mises à jour de contenu.",
-    tags: ["Web", "Hébergement", "HTTPS", "Nom de domaine"],
-    link: "https://afroassets.com",
+      "Conception d'un cluster de stockage distribué Ceph sur Proxmox VE : réplication des données, tolérance aux pannes, chiffrement et haute disponibilité pour des environnements virtualisés.",
+    tags: ["Ceph", "Proxmox VE", "HA", "Stockage"],
   },
   {
     icon: Network,
     title: "Interconnexion sécurisée de sites distants",
-    context: "DOOTRI",
+    context: "Dootri",
     description:
-      "Mise en place d'un tunnel IPsec entre deux sites via Fortigate 40F, routage inter-VLAN (RIP, OSPF, EIGRP) et politiques de filtrage adaptées aux flux métiers.",
-    tags: ["Fortigate 40F", "IPsec", "VLAN", "OSPF"],
+      "Tunnels IPsec entre sites via FortiGate 40F, Cisco ASA et pfSense, routage inter-VLAN (RIP, OSPF, EIGRP) et politiques de filtrage adaptées aux flux métiers.",
+    tags: ["FortiGate 40F", "Cisco ASA", "pfSense", "IPsec"],
   },
   {
     icon: ShieldCheck,
-    title: "Campagne de tests d'intrusion interne",
-    context: "DOOTRI",
+    title: "Détection des menaces et analyse de logs",
+    context: "Dootri",
     description:
-      "Reconnaissance réseau (Nmap), exploitation de vulnérabilités (Metasploit), capture de handshake WPA, analyse de malware Python et détection par règles Yara, avec rapport de recommandations.",
-    tags: ["Nmap", "Metasploit", "Yara", "WPA"],
+      "Inspection du trafic réseau avec Suricata sur pfSense (IDS/IPS), collecte et corrélation des événements dans Splunk, surveillance des terminaux via Windows Defender (EDR).",
+    tags: ["Suricata", "IDS/IPS", "Splunk", "EDR"],
   },
   {
     icon: Activity,
-    title: "Supervision d'infrastructure",
-    context: "DOOTRI / 3MAUC",
+    title: "Supervision, sauvegarde et haute disponibilité",
+    context: "Dootri",
     description:
-      "Déploiement de Zabbix et Nagios : inventaire des équipements, seuils d'alerte, tableaux de bord et alerting par mail pour réduire le temps de détection des incidents.",
-    tags: ["Zabbix", "Nagios", "Alerting"],
+      "Supervision Zabbix, stockage TrueNAS, sauvegardes Veeam Backup et clusters de basculement / équilibrage de charge sous Windows Server 2022 (PRA/PCA).",
+    tags: ["Zabbix", "TrueNAS", "Veeam", "Failover Cluster"],
   },
   {
     icon: Server,
     title: "Infrastructure Active Directory & déploiement automatisé",
-    context: "3MAUC",
+    context: "Dootri / 3MAUC",
     description:
-      "Structuration de l'annuaire AD (OU, groupes, GPO), déploiement d'applications via SCCM et scripts d'automatisation pour la préparation des postes.",
-    tags: ["Active Directory", "GPO", "SCCM", "Scripts"],
+      "Structuration de l'annuaire AD (OU, groupes, GPO), services DNS, déploiement d'applications et supervision des postes via SCCM.",
+    tags: ["Active Directory", "GPO", "DNS", "SCCM"],
   },
   {
-    icon: Server,
-    title: "Plateforme conteneurisée de test",
-    context: "Projet personnel",
+    icon: Globe,
+    title: "Site vitrine SETASSET — afroassets.com",
+    context: "SET ASSET",
     description:
-      "Environnement de laboratoire sous Docker / Docker Compose et Kubernetes pour tester des services et rejouer des scénarios d'attaque en environnement isolé.",
-    tags: ["Docker", "Kubernetes", "Lab"],
+      "Conception, mise en ligne et maintenance du site vitrine : hébergement, nom de domaine, sécurisation HTTPS et mises à jour de contenu.",
+    tags: ["Web", "Hébergement", "HTTPS", "Nom de domaine"],
+    link: "https://afroassets.com",
   },
 ];
 
 export function Projects() {
   return (
     <section id="realisations" className="mx-auto max-w-6xl px-5 py-24">
-      <SectionTitle index="05." title="Réalisations" />
+      <SectionTitle index="05." title="Réalisations & Projets" />
       <div className="grid gap-5 md:grid-cols-2">
         {PROJECTS.map((p, i) => (
           <Reveal key={p.title} delay={i * 80}>

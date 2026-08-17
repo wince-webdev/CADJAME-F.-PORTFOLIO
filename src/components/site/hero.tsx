@@ -5,7 +5,7 @@ import { TypingRoles } from "./typing";
 const profile = "/florentin-cadjame.jpg";
 
 export const CV_URL = "/cv-florentin-cadjame.pdf";
-export const LINKEDIN_URL = "https://www.linkedin.com/in/florentin-cadjame-48a0aa111/";
+export const LINKEDIN_URL = "https://www.linkedin.com/in/florentin-cadjame";
 
 export function Hero() {
   return (
@@ -20,7 +20,7 @@ export function Hero() {
         <div>
           <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-3 py-1 font-mono text-xs text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-            Paris 75016 — mobilité France entière
+            Bobigny 93000 — mobilité Île-de-France / France
           </p>
           <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl">
             Florentin CADJAME
@@ -37,8 +37,8 @@ export function Hero() {
           </div>
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
-            Je sécurise, j'audite et je fiabilise les infrastructures IT — du réseau au poste de
-            travail, jusqu'au pentest.
+            Je conçois, j'exploite et je sécurise les infrastructures informatiques — du réseau au
+            datacenter virtualisé, jusqu'à la détection des menaces.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -55,7 +55,13 @@ export function Hero() {
             >
               Me contacter
             </a>
-            
+            <a
+              href="/portfolio-florentin-cadjame.zip"
+              download
+              className="inline-flex items-center gap-2 rounded-md border border-border bg-surface px-5 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
+            >
+              <FileArchive className="h-4 w-4" /> Télécharger le ZIP
+            </a>
             <a
               href={LINKEDIN_URL}
               target="_blank"
@@ -82,7 +88,7 @@ export function Hero() {
               <Mail className="h-3.5 w-3.5 text-primary" /> fcadjame@gmail.com
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <MapPin className="h-3.5 w-3.5 text-primary" /> Paris, France
+              <MapPin className="h-3.5 w-3.5 text-primary" /> Bobigny (93), France
             </span>
           </div>
         </div>

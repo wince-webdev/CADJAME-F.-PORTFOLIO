@@ -6,7 +6,7 @@ import { About, Experiences, Formations, Skills, Contact, Footer } from "@/compo
 
 const title = "Florentin CADJAME — Ingénieur Systèmes, Réseaux & Cybersécurité";
 const description =
-  "Portfolio de Florentin CADJAME, ingénieur systèmes, réseaux et cybersécurité à Paris : administration d'infrastructures, sécurisation réseau, pentest et DevSecOps.";
+  "Portfolio de Florentin CADJAME, ingénieur systèmes, réseaux et cybersécurité en Île-de-France : Windows Server, Active Directory, virtualisation Proxmox/VMware, pfSense, Suricata, Splunk et Veeam.";
 
 export const Route = createFileRoute("/")({
   head: () => ({

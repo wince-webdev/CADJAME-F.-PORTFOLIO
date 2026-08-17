@@ -1,29 +1,33 @@
-# Welcome to your Lovable project
+# Portfolio — Florentin CADJAME
 
-This project was built with [Lovable](https://lovable.dev).
+Portfolio one-page (React 19 + TanStack Start + Vite + Tailwind CSS v4).
 
-## Build with Lovable
+## Lancer en local
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+```bash
+npm install
 npm run dev
 ```
 
-## Built with
+Puis ouvrir http://localhost:8080
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+## Build de production
+
+```bash
+npm run build
+```
+
+## Déploiement (Vercel)
+
+1. Pousser le dossier sur GitHub.
+2. Sur Vercel : "Add New Project" > importer le dépôt > Deploy.
+3. Chaque `git push` sur la branche principale redéploie automatiquement le site.
+
+## Mettre à jour le contenu
+
+- Photo, CV PDF, favicon : dossier `public/`
+- Hero (nom, coordonnées) : `src/components/site/hero.tsx`
+- À propos / Expériences / Études / Compétences / Contact : `src/components/site/sections.tsx`
+- Réalisations & projets : `src/components/site/projects.tsx`
+- Menu de navigation : `src/components/site/nav.tsx`
+- Couleurs et typographie : `src/styles.css`
