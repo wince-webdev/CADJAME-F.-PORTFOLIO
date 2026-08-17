@@ -5,7 +5,7 @@ import { TypingRoles } from "./typing";
 const profile = "/florentin-cadjame.jpg";
 
 export const CV_URL = "/cv-florentin-cadjame.pdf";
-export const LINKEDIN_URL = "https://www.linkedin.com/in/florentin-cadjame";
+export const LINKEDIN_URL = "https://www.linkedin.com/in/florentin-cadjame-48a0aa111/";
 
 export function Hero() {
   return (

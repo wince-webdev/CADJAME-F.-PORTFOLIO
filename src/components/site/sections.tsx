@@ -443,7 +443,7 @@ export function Footer() {
   return (
     <footer className="border-t border-border py-8">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 font-mono text-xs text-muted-foreground">
-        <p>© {new Date().getFullYear()} Florentin CADJAME — tous droits réservés.</p>
+        <p>© {new Date().getFullYear()} Florentin CADJAME — Tous droits réservés.</p>
         <div className="flex items-center gap-3">
           <a
             href={LINKEDIN_URL}
