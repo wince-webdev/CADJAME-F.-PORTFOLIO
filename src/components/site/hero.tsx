@@ -1,4 +1,4 @@
-import { Download, Mail, Linkedin, MapPin, Phone, FileArchive } from "lucide-react";
+import { Download, Mail, Linkedin, MapPin, Phone } from "lucide-react";
 import { TypingRoles } from "./typing";
 
 // Fichiers servis depuis /public : fonctionnent en local ET en ligne
@@ -6,6 +6,17 @@ const profile = "/florentin-cadjame.jpg";
 
 export const CV_URL = "/cv-florentin-cadjame.pdf";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/florentin-cadjame-48a0aa111/";
+// Numéro au format international sans espaces/plus, requis par l'API wa.me
+export const WHATSAPP_URL = "https://wa.me/33745694758";
+
+// Logo WhatsApp officiel (lucide-react n'a pas d'icône de marque) — SVG monochrome hérite de currentColor
+export function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.868-2.03-.967-.273-.099-.472-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.05 22h-.005a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374A9.86 9.86 0 0 1 2.1 12.05C2.1 6.529 6.579 2.05 12.1 2.05c2.652 0 5.144 1.033 7.019 2.91a9.82 9.82 0 0 1 2.9 6.99c-.003 5.523-4.48 10.05-9.97 10.05zM12.1 0h-.05C5.469.03.1 5.4.1 12.02c0 2.153.565 4.254 1.635 6.096L0 24l6.028-1.575a11.94 11.94 0 0 0 5.997 1.605h.005c6.628 0 12-5.373 12-12 0-3.207-1.25-6.222-3.518-8.487A11.93 11.93 0 0 0 12.1 0z" />
+    </svg>
+  );
+}
 
 export function Hero() {
   return (
@@ -56,6 +67,14 @@ export function Hero() {
               Me contacter
             </a>
             <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-md bg-[#25D366] px-5 py-2.5 text-sm font-medium text-white transition-transform hover:-translate-y-0.5"
+            >
+              <WhatsAppIcon className="h-4 w-4" /> WhatsApp
+            </a>
+            <a
               href={LINKEDIN_URL}
               target="_blank"
               rel="noreferrer"
@@ -74,12 +93,20 @@ export function Hero() {
           </div>
 
           <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs text-muted-foreground">
-            <span className="inline-flex items-center gap-1.5">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-primary"
+            >
               <Phone className="h-3.5 w-3.5 text-primary" /> 07 45 69 47 58
-            </span>
-            <span className="inline-flex items-center gap-1.5">
+            </a>
+            <a
+              href="mailto:fcadjame@gmail.com"
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-primary"
+            >
               <Mail className="h-3.5 w-3.5 text-primary" /> fcadjame@gmail.com
-            </span>
+            </a>
             <span className="inline-flex items-center gap-1.5">
               <MapPin className="h-3.5 w-3.5 text-primary" /> Bobigny (93), France
             </span>

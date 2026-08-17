@@ -15,7 +15,7 @@ import {
   Send,
 } from "lucide-react";
 import { Reveal, SectionTitle } from "@/components/reveal";
-import { CV_URL, LINKEDIN_URL } from "./hero";
+import { CV_URL, LINKEDIN_URL, WHATSAPP_URL, WhatsAppIcon } from "./hero";
 
 const EXPERIENCES = [
   {
@@ -128,19 +128,16 @@ const SKILLS = [
   {
     icon: Server,
     title: "Systèmes",
-    level: 92,
     items: ["Windows Server", "Active Directory", "Linux Ubuntu/Debian", "DNS / DHCP", "GPO", "HA"],
   },
   {
     icon: Network,
     title: "Réseau",
-    level: 90,
     items: ["TCP/IP", "VLAN", "VPN", "pfSense", "Routage / NAT", "Cisco", "HA"],
   },
   {
     icon: MonitorCog,
     title: "Virtualisation",
-    level: 88,
     items: [
       "Proxmox VE",
       "Hyper-V",
@@ -154,7 +151,6 @@ const SKILLS = [
   {
     icon: ShieldCheck,
     title: "Cybersécurité",
-    level: 85,
     items: [
       "Suricata / pfSense (IDS, IPS)",
       "Splunk (collecte & corrélation)",
@@ -269,13 +265,6 @@ export function Skills() {
                   <s.icon className="h-5 w-5" />
                 </span>
                 <h3 className="font-semibold">{s.title}</h3>
-                <span className="ml-auto font-mono text-xs text-muted-foreground">{s.level}%</span>
-              </div>
-              <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-muted">
-                <div
-                  className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-[width] duration-1000"
-                  style={{ width: `${s.level}%` }}
-                />
               </div>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {s.items.map((it) => (
@@ -407,6 +396,12 @@ export function Contact() {
                 <Phone className="h-4 w-4 text-primary" />
                 <a href="tel:+33745694758" className="hover:text-primary">
                   07 45 69 47 58
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <WhatsAppIcon className="h-4 w-4 text-primary" />
+                <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="hover:text-primary">
+                  Discuter sur WhatsApp
                 </a>
               </li>
               <li className="flex items-center gap-3">
