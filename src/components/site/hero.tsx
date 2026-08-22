@@ -1,5 +1,6 @@
 import { Download, Mail, Linkedin, MapPin, Phone } from "lucide-react";
 import { TypingRoles } from "./typing";
+import { useLanguage } from "@/lib/i18n";
 
 // Fichiers servis depuis /public : fonctionnent en local ET en ligne
 const profile = "/florentin-cadjame.jpg";
@@ -19,6 +20,7 @@ export function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 export function Hero() {
+  const { t } = useLanguage();
   return (
     <section id="accueil" className="relative overflow-hidden pt-32 pb-24 sm:pt-40">
       
@@ -31,13 +33,13 @@ export function Hero() {
         <div>
           <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-3 py-1 font-mono text-xs text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-            Bobigny 93000 — mobilité Île-de-France / France
+            {t.hero.badge}
           </p>
           <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl">
             Florentin CADJAME
           </h1>
           <p className="mt-3 text-lg text-muted-foreground sm:text-xl">
-            Ingénieur Systèmes, Réseaux &amp; Cybersécurité
+            {t.hero.title}
           </p>
 
           <div className="mt-6 max-w-xl rounded-lg border border-border bg-surface/60 p-4 font-mono text-sm">
@@ -48,8 +50,7 @@ export function Hero() {
           </div>
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
-            Je conçois, j'exploite et je sécurise les infrastructures informatiques — du réseau au
-            datacenter virtualisé, jusqu'à la détection des menaces.
+            {t.hero.intro}
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -58,13 +59,13 @@ export function Hero() {
               download
               className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-transform hover:-translate-y-0.5"
             >
-              <Download className="h-4 w-4" /> Télécharger mon CV
+              <Download className="h-4 w-4" /> {t.hero.downloadCv}
             </a>
             <a
               href="#contact"
               className="inline-flex items-center gap-2 rounded-md border border-primary/40 px-5 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
             >
-              Me contacter
+              {t.hero.contactMe}
             </a>
             <a
               href={WHATSAPP_URL}
@@ -72,7 +73,7 @@ export function Hero() {
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-md bg-[#25D366] px-5 py-2.5 text-sm font-medium text-white transition-transform hover:-translate-y-0.5"
             >
-              <WhatsAppIcon className="h-4 w-4" /> WhatsApp
+              <WhatsAppIcon className="h-4 w-4" /> {t.hero.whatsapp}
             </a>
             <a
               href={LINKEDIN_URL}
@@ -117,7 +118,7 @@ export function Hero() {
           <div className="glow-ring overflow-hidden rounded-full">
             <img
               src={profile}
-              alt="Portrait de Florentin CADJAME"
+              alt={t.hero.title}
               width={768}
               height={768}
               className="h-full w-full object-cover"

@@ -1,16 +1,58 @@
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowUp, ShieldCheck } from "lucide-react";
+import { Menu, X, ArrowUp, ShieldCheck, Sun, Moon, Languages } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/lib/i18n";
+import { useTheme } from "@/lib/theme";
 
-const LINKS = [
-  { href: "#accueil", label: "Accueil" },
-  { href: "#apropos", label: "À propos" },
-  { href: "#experiences", label: "Expériences" },
-  { href: "#formations", label: "Études" },
-  { href: "#competences", label: "Compétences" },
-  { href: "#realisations", label: "Réalisations" },
-  { href: "#contact", label: "Contact" },
-];
+function useNavLinks() {
+  const { t } = useLanguage();
+  return [
+    { href: "#accueil", label: t.nav.accueil },
+    { href: "#apropos", label: t.nav.apropos },
+    { href: "#experiences", label: t.nav.experiences },
+    { href: "#formations", label: t.nav.formations },
+    { href: "#competences", label: t.nav.competences },
+    { href: "#realisations", label: t.nav.realisations },
+    { href: "#contact", label: t.nav.contact },
+  ];
+}
+
+export function LangToggle({ className }: { className?: string }) {
+  const { lang, toggleLang } = useLanguage();
+  const { nav_aria } = useLanguage().t;
+  return (
+    <button
+      type="button"
+      onClick={toggleLang}
+      aria-label={nav_aria.toggleLang}
+      className={cn(
+        "inline-flex items-center gap-1.5 rounded-md border border-border px-2.5 py-2 font-mono text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary",
+        className,
+      )}
+    >
+      <Languages className="h-3.5 w-3.5" />
+      {lang === "fr" ? "FR" : "EN"}
+    </button>
+  );
+}
+
+export function ThemeToggle({ className }: { className?: string }) {
+  const { theme, toggleTheme } = useTheme();
+  const { nav_aria } = useLanguage().t;
+  return (
+    <button
+      type="button"
+      onClick={toggleTheme}
+      aria-label={nav_aria.toggleTheme}
+      className={cn(
+        "rounded-md border border-border p-2 text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary",
+        className,
+      )}
+    >
+      {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+    </button>
+  );
+}
 
 export function ScrollProgress() {
   const [progress, setProgress] = useState(0);
@@ -37,6 +79,8 @@ export function ScrollProgress() {
 export function SiteNav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const LINKS = useNavLinks();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -71,13 +115,22 @@ export function SiteNav() {
           ))}
         </ul>
 
-        <button
-          aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-          onClick={() => setOpen((v) => !v)}
-          className="rounded-md border border-border p-2 text-foreground md:hidden"
-        >
-          {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-        </button>
+        <div className="hidden items-center gap-2 md:flex">
+          <LangToggle />
+          <ThemeToggle />
+        </div>
+
+        <div className="flex items-center gap-2 md:hidden">
+          <LangToggle />
+          <ThemeToggle />
+          <button
+            aria-label={open ? t.nav_aria.closeMenu : t.nav_aria.openMenu}
+            onClick={() => setOpen((v) => !v)}
+            className="rounded-md border border-border p-2 text-foreground"
+          >
+            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </button>
+        </div>
       </nav>
 
       {open && (
@@ -101,6 +154,7 @@ export function SiteNav() {
 
 export function BackToTop() {
   const [show, setShow] = useState(false);
+  const { t } = useLanguage();
   useEffect(() => {
     const onScroll = () => setShow(window.scrollY > 600);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -109,7 +163,7 @@ export function BackToTop() {
   if (!show) return null;
   return (
     <button
-      aria-label="Retour en haut"
+      aria-label={t.nav_aria.backToTop}
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       className="glow-ring fixed bottom-6 right-6 z-40 rounded-full bg-surface p-3 text-primary transition-transform hover:-translate-y-0.5"
     >

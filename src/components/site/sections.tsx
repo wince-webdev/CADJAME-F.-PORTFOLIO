@@ -16,173 +16,27 @@ import {
 } from "lucide-react";
 import { Reveal, SectionTitle } from "@/components/reveal";
 import { CV_URL, LINKEDIN_URL, WHATSAPP_URL, WhatsAppIcon } from "./hero";
+import { useLanguage } from "@/lib/i18n";
 
-const EXPERIENCES = [
-  {
-    role: "Ingénieur Systèmes, Réseaux et Cybersécurité",
-    company: "Dootri — Lyon, France",
-    period: "Depuis février 2025",
-    groups: [
-      {
-        label: "Sécurité réseau",
-        items:
-          "Mise en œuvre et administration de solutions de sécurité réseau (FortiGate 40F, Cisco ASA, pfSense), configuration de tunnels IPsec.",
-      },
-      {
-        label: "Cybersécurité",
-        items:
-          "Tests d'intrusion en environnement contrôlé, inspection des trafics réseau (Suricata / pfSense — IDS/IPS), collecte et analyse de données avec Splunk.",
-      },
-      {
-        label: "Architecture réseau",
-        items:
-          "Conception et administration d'architectures réseau avec routage inter-VLAN, routage statique et dynamique (RIP, OSPF, EIGRP).",
-      },
-      {
-        label: "Systèmes Windows",
-        items:
-          "Windows Server : Active Directory (AD DS), stratégies de groupe (GPO), services DNS, déploiement et supervision via SCCM, clusters de basculement et équilibrage de charge (HA sur Windows Server 2022).",
-      },
-      {
-        label: "Stockage, supervision & sauvegarde",
-        items: "TrueNAS, Zabbix et Veeam Backup.",
-      },
-      {
-        label: "Virtualisation",
-        items:
-          "Installation, configuration et administration d'environnements VMware, Hyper-V et Proxmox : machines virtuelles, réseaux virtuels et haute disponibilité.",
-      },
-      {
-        label: "Cloud",
-        items: "Administration Microsoft 365, Entra ID (Azure AD), virtualisation et sauvegarde cloud (notions).",
-      },
-    ],
-  },
-  {
-    role: "Responsable Infrastructures Réseaux et Systèmes",
-    company: "3MAUC — Cotonou, Bénin",
-    period: "Octobre 2023 – Octobre 2024",
-    groups: [
-      {
-        label: "Systèmes",
-        items:
-          "Administration Windows & Linux : installation, configuration, mises à jour, gestion des comptes et droits d'accès (Active Directory).",
-      },
-      { label: "Virtualisation", items: "Gestion d'environnements virtualisés VMware et Hyper-V." },
-      {
-        label: "Réseaux",
-        items:
-          "Configuration et maintenance des switches, routeurs et firewalls, mise en place de VLAN, routage statique et dynamique (OSPF, RIP, EIGRP).",
-      },
-      {
-        label: "Interconnexion & sécurité",
-        items:
-          "Connectivité entre sites distants, configuration de VPN site-to-site et sécurisation des communications.",
-      },
-    ],
-  },
-  {
-    role: "Administrateur Systèmes et Réseaux",
-    company: "SET ASSET — Bruxelles / Cotonou, Bénin",
-    period: "Décembre 2019 – Décembre 2022",
-    groups: [
-      {
-        label: "Sécurité & administration système",
-        items:
-          "Stratégies de sécurité (GPO, antivirus, audit), gestion des services DNS, DHCP, FTP et attribution d'adresses IP fixes/dynamiques.",
-      },
-      {
-        label: "Virtualisation",
-        items: "Déploiement et gestion d'environnements VMware et Hyper-V (serveurs et postes de travail).",
-      },
-      {
-        label: "Réseaux",
-        items:
-          "Configuration et maintenance des switches, routeurs et firewalls, VLAN, routage statique et dynamique (OSPF, RIP), surveillance du trafic avec Wireshark.",
-      },
-      {
-        label: "Développement web",
-        items: "Création et mise en ligne du site vitrine de SETASSET (afroassets.com).",
-      },
-    ],
-  },
-];
-
-const FORMATIONS = [
-  {
-    title: "Master Ingénieur Systèmes, Réseaux et Cybersécurité",
-    school: "Institut F2I — Paris",
-    period: "2026",
-    detail:
-      "Infrastructures systèmes et réseaux, sécurisation des systèmes d'information, supervision et haute disponibilité.",
-  },
-  {
-    title: "Master Ingénieur Systèmes, Réseaux",
-    school: "Institut Cerco Abidjan — Abidjan",
-    period: "2019",
-    detail: "Fondamentaux réseaux, administration systèmes et maintenance informatique.",
-  },
-];
-
-const SKILLS = [
-  {
-    icon: Server,
-    title: "Systèmes",
-    items: ["Windows Server", "Active Directory", "Linux Ubuntu/Debian", "DNS / DHCP", "GPO", "HA"],
-  },
-  {
-    icon: Network,
-    title: "Réseau",
-    items: ["TCP/IP", "VLAN", "VPN", "pfSense", "Routage / NAT", "Cisco", "HA"],
-  },
-  {
-    icon: MonitorCog,
-    title: "Virtualisation",
-    items: [
-      "Proxmox VE",
-      "Hyper-V",
-      "VMware ESXi",
-      "Gestion de VM",
-      "Snapshots",
-      "Stockage virtualisé",
-      "HA",
-    ],
-  },
-  {
-    icon: ShieldCheck,
-    title: "Cybersécurité",
-    items: [
-      "Suricata / pfSense (IDS, IPS)",
-      "Splunk (collecte & corrélation)",
-      "EDR — Windows Defender",
-      "Veeam Backup — PRA/PCA",
-    ],
-  },
-];
+const SKILL_ICONS = {
+  systemes: Server,
+  reseau: Network,
+  virtualisation: MonitorCog,
+  cybersecurite: ShieldCheck,
+} as const;
 
 export function About() {
+  const { t } = useLanguage();
   return (
     <section id="apropos" className="mx-auto max-w-6xl px-5 py-24">
-      <SectionTitle index="01." title="À propos" />
+      <SectionTitle index="01." title={t.about.sectionTitle} />
       <div className="grid gap-8 md:grid-cols-[1.5fr_1fr]">
         <Reveal>
-          <p className="text-base leading-relaxed text-muted-foreground">
-            Ingénieur Systèmes, Réseaux et Cybersécurité, je participe activement à la{" "}
-            <span className="text-foreground">conception</span>, l'
-            <span className="text-foreground">exploitation</span> et la{" "}
-            <span className="text-foreground">sécurisation</span> des infrastructures informatiques :
-            architectures réseau et VLAN, administration Windows Server et Linux, virtualisation et
-            haute disponibilité, supervision, sauvegarde et détection des menaces.
-          </p>
+          <p className="text-base leading-relaxed text-muted-foreground">{t.about.paragraph}</p>
         </Reveal>
         <Reveal delay={120}>
           <ul className="rounded-lg border border-border bg-card p-5 font-mono text-sm">
-            {[
-              ["localisation", "Bobigny 93000"],
-              ["mobilité", "Île-de-France / France"],
-              ["permis", "B — véhiculé"],
-              ["disponibilité", "à l'écoute d'opportunités"],
-            ].map(([k, v]) => (
+            {t.about.info.map(([k, v]) => (
               <li
                 key={k}
                 className="flex justify-between gap-4 border-b border-border/60 py-2 last:border-0"
@@ -199,11 +53,12 @@ export function About() {
 }
 
 export function Experiences() {
+  const { t } = useLanguage();
   return (
     <section id="experiences" className="mx-auto max-w-6xl px-5 py-24">
-      <SectionTitle index="02." title="Expériences" />
+      <SectionTitle index="02." title={t.experiences.sectionTitle} />
       <div className="relative border-l border-border pl-6 sm:pl-10">
-        {EXPERIENCES.map((exp, i) => (
+        {t.experiences.items.map((exp, i) => (
           <Reveal key={exp.company} delay={i * 90} className="relative mb-8 last:mb-0">
             <span className="absolute -left-[31px] top-6 h-3 w-3 rounded-full border-2 border-primary bg-background sm:-left-[47px]" />
             <article className="group rounded-xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_24px_60px_-32px_var(--glow)]">
@@ -232,11 +87,12 @@ export function Experiences() {
 }
 
 export function Formations() {
+  const { t } = useLanguage();
   return (
     <section id="formations" className="mx-auto max-w-6xl px-5 py-24">
-      <SectionTitle index="03." title="Études & Diplômes" />
+      <SectionTitle index="03." title={t.formations.sectionTitle} />
       <div className="grid gap-5 md:grid-cols-2">
-        {FORMATIONS.map((f, i) => (
+        {t.formations.items.map((f, i) => (
           <Reveal key={f.title} delay={i * 90}>
             <article className="h-full rounded-xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-accent/40">
               <GraduationCap className="h-5 w-5 text-accent" />
@@ -253,44 +109,45 @@ export function Formations() {
 }
 
 export function Skills() {
+  const { t } = useLanguage();
   return (
     <section id="competences" className="mx-auto max-w-6xl px-5 py-24">
-      <SectionTitle index="04." title="Compétences techniques" />
+      <SectionTitle index="04." title={t.skills.sectionTitle} />
       <div className="grid gap-5 sm:grid-cols-2">
-        {SKILLS.map((s, i) => (
-          <Reveal key={s.title} delay={i * 90}>
-            <article className="h-full rounded-xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-primary/40">
-              <div className="flex items-center gap-3">
-                <span className="rounded-md bg-primary/10 p-2 text-primary">
-                  <s.icon className="h-5 w-5" />
-                </span>
-                <h3 className="font-semibold">{s.title}</h3>
-              </div>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {s.items.map((it) => (
-                  <li
-                    key={it}
-                    className="rounded-md border border-border bg-surface px-2.5 py-1 font-mono text-xs text-muted-foreground"
-                  >
-                    {it}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          </Reveal>
-        ))}
+        {t.skills.items.map((s, i) => {
+          const Icon = SKILL_ICONS[s.key as keyof typeof SKILL_ICONS] ?? Server;
+          return (
+            <Reveal key={s.key} delay={i * 90}>
+              <article className="h-full rounded-xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-primary/40">
+                <div className="flex items-center gap-3">
+                  <span className="rounded-md bg-primary/10 p-2 text-primary">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <h3 className="font-semibold">{s.title}</h3>
+                </div>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {s.items.map((it) => (
+                    <li
+                      key={it}
+                      className="rounded-md border border-border bg-surface px-2.5 py-1 font-mono text-xs text-muted-foreground"
+                    >
+                      {it}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </Reveal>
+          );
+        })}
       </div>
 
       <div className="mt-8">
         <Reveal>
           <div className="rounded-xl border border-border bg-card p-6 sm:max-w-md">
             <h3 className="flex items-center gap-2 font-semibold">
-              <Languages className="h-5 w-5 text-primary" /> Langues
+              <Languages className="h-5 w-5 text-primary" /> {t.skills.languagesTitle}
             </h3>
-            {[
-              { label: "Français", level: "100 %", value: 100 },
-              { label: "Anglais", level: "40 %", value: 40 },
-            ].map((lang) => (
+            {t.skills.languages.map((lang) => (
               <div key={lang.label} className="mt-4">
                 <div className="flex items-center justify-between text-sm">
                   <span>{lang.label}</span>
@@ -312,11 +169,12 @@ export function Skills() {
 }
 
 export function Contact() {
+  const { t } = useLanguage();
   const [sent, setSent] = useState(false);
 
   return (
     <section id="contact" className="mx-auto max-w-6xl px-5 py-24">
-      <SectionTitle index="06." title="Contact" />
+      <SectionTitle index="06." title={t.contact.sectionTitle} />
       <div className="grid gap-8 md:grid-cols-2">
         <Reveal>
           <form
@@ -335,7 +193,7 @@ export function Contact() {
             <div className="space-y-4">
               <div>
                 <label htmlFor="name" className="font-mono text-xs text-muted-foreground">
-                  nom
+                  {t.contact.formName}
                 </label>
                 <input
                   id="name"
@@ -346,7 +204,7 @@ export function Contact() {
               </div>
               <div>
                 <label htmlFor="email" className="font-mono text-xs text-muted-foreground">
-                  email
+                  {t.contact.formEmail}
                 </label>
                 <input
                   id="email"
@@ -358,7 +216,7 @@ export function Contact() {
               </div>
               <div>
                 <label htmlFor="message" className="font-mono text-xs text-muted-foreground">
-                  message
+                  {t.contact.formMessage}
                 </label>
                 <textarea
                   id="message"
@@ -372,12 +230,10 @@ export function Contact() {
                 type="submit"
                 className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-transform hover:-translate-y-0.5"
               >
-                <Send className="h-4 w-4" /> Envoyer le message
+                <Send className="h-4 w-4" /> {t.contact.send}
               </button>
               {sent && (
-                <p className="font-mono text-xs text-primary">
-                  Votre logiciel de messagerie s'ouvre avec le message pré-rempli.
-                </p>
+                <p className="font-mono text-xs text-primary">{t.contact.sentNotice}</p>
               )}
             </div>
           </form>
@@ -401,12 +257,11 @@ export function Contact() {
               <li className="flex items-center gap-3">
                 <WhatsAppIcon className="h-4 w-4 text-primary" />
                 <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="hover:text-primary">
-                  Discuter sur WhatsApp
+                  {t.contact.whatsappChat}
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <MapPin className="h-4 w-4 text-primary" /> 22 avenue Paul Vaillant Couturier, 93000
-                Bobigny
+                <MapPin className="h-4 w-4 text-primary" /> {t.contact.address}
               </li>
               <li className="flex items-center gap-3">
                 <Linkedin className="h-4 w-4 text-primary" />
@@ -416,7 +271,7 @@ export function Contact() {
                   rel="noreferrer"
                   className="hover:text-primary"
                 >
-                  Profil LinkedIn
+                  {t.contact.linkedinProfile}
                 </a>
               </li>
             </ul>
@@ -425,7 +280,7 @@ export function Contact() {
               download
               className="mt-6 inline-flex items-center gap-2 rounded-md border border-primary/40 px-5 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
             >
-              <Download className="h-4 w-4" /> Télécharger le CV en PDF
+              <Download className="h-4 w-4" /> {t.contact.downloadCv}
             </a>
           </div>
         </Reveal>
@@ -435,10 +290,11 @@ export function Contact() {
 }
 
 export function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="border-t border-border py-8">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 font-mono text-xs text-muted-foreground">
-        <p>© {new Date().getFullYear()} Florentin CADJAME — Tous droits réservés.</p>
+        <p>© {new Date().getFullYear()} Florentin CADJAME — {t.footer.rights}</p>
         <div className="flex items-center gap-3">
           <a
             href={LINKEDIN_URL}

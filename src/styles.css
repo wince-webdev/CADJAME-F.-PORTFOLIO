@@ -64,6 +64,31 @@
   color-scheme: dark;
 }
 
+.light {
+  color-scheme: light;
+  --background: oklch(0.98 0.006 250);
+  --foreground: oklch(0.2 0.03 253);
+  --surface: oklch(0.94 0.01 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.03 253);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.03 253);
+  --primary: oklch(0.55 0.15 172);
+  --primary-foreground: oklch(0.98 0.006 250);
+  --secondary: oklch(0.92 0.012 250);
+  --secondary-foreground: oklch(0.2 0.03 253);
+  --muted: oklch(0.93 0.012 250);
+  --muted-foreground: oklch(0.44 0.02 253);
+  --accent: oklch(0.6 0.15 55);
+  --accent-foreground: oklch(0.98 0.006 250);
+  --destructive: oklch(0.55 0.21 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.88 0.012 250);
+  --input: oklch(0.9 0.012 250);
+  --ring: oklch(0.55 0.15 172);
+  --glow: oklch(0.55 0.15 172 / 0.22);
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
