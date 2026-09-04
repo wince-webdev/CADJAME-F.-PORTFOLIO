@@ -4,7 +4,7 @@ import { Hero } from "@/components/site/hero";
 import { Projects } from "@/components/site/projects";
 import { About, Experiences, Formations, Skills, Contact, Footer } from "@/components/site/sections";
 
-const title = "Florentin CADJAME - Ingénieur Systèmes, Réseaux & Cybersécurité";
+const title = "Florentin CADJAME . Ingénieur Systèmes, Réseaux & Cybersécurité";
 const description =
   "Portfolio de Florentin CADJAME, ingénieur systèmes, réseaux et cybersécurité en Île-de-France : Windows Server, Active Directory, virtualisation Proxmox/VMware, pfSense, Suricata, Splunk et Veeam.";
 
