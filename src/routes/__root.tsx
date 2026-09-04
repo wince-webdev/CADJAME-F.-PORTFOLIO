@@ -75,14 +75,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Florentin CADJAME — Ingénieur Systèmes, Réseaux & Cybersécurité" },
+      { title: "Florentin CADJAME - Ingénieur Systèmes, Réseaux & Cybersécurité" },
       {
         name: "description",
         content:
           "Portfolio de Florentin CADJAME : conception, exploitation et sécurisation d'infrastructures systèmes, réseaux et cloud.",
       },
       { name: "author", content: "Florentin CADJAME" },
-      { property: "og:title", content: "Florentin CADJAME — Ingénieur Systèmes, Réseaux & Cybersécurité" },
+      { property: "og:title", content: "Florentin CADJAME - Ingénieur Systèmes, Réseaux & Cybersécurité" },
       {
         property: "og:description",
         content:
