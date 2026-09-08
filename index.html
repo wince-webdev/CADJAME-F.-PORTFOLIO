@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Florentin CADJAME - Ingénieur Systèmes, Réseaux &amp; Cybersécurité</title>
+  <meta name="author" content="Florentin CADJAME" />
+  <meta name="description" content="Portfolio de Florentin CADJAME, ingénieur systèmes, réseaux et cybersécurité en Île-de-France : Windows Server, Active Directory, virtualisation Proxmox/VMware, pfSense, Suricata, Splunk et Veeam." />
+  <meta property="og:title" content="Florentin CADJAME - Ingénieur Systèmes, Réseaux &amp; Cybersécurité" />
+  <meta property="og:description" content="Portfolio de Florentin CADJAME, ingénieur systèmes, réseaux et cybersécurité en Île-de-France : Windows Server, Active Directory, virtualisation Proxmox/VMware, pfSense, Suricata, Splunk et Veeam." />
+  <meta property="og:type" content="profile" />
+  <meta property="og:url" content="https://cadjame-f-portfolio.vercel.app/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="robots" content="index, follow" />
+  <meta name="google-site-verification" content="google2dcb20703f047c58" />
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://cadjame-f-portfolio.vercel.app/" />
+  <link rel="preload" as="image" href="./assets/florentin-cadjame.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+  <style>
+    :root {
+      --radius: 0.5rem;
+      --background: oklch(0.16 0.026 253);
+      --foreground: oklch(0.95 0.008 250);
+      --surface: oklch(0.21 0.03 253);
+      --card: oklch(0.2 0.028 253);
+      --card-foreground: oklch(0.95 0.008 250);
+      --popover: oklch(0.2 0.028 253);
+      --popover-foreground: oklch(0.95 0.008 250);
+      --primary: oklch(0.82 0.17 172);
+      --primary-foreground: oklch(0.16 0.026 253);
+      --secondary: oklch(0.26 0.032 253);
+      --secondary-foreground: oklch(0.95 0.008 250);
+      --muted: oklch(0.25 0.03 253);
+      --muted-foreground: oklch(0.71 0.02 250);
+      --accent: oklch(0.74 0.16 55);
+      --accent-foreground: oklch(0.16 0.026 253);
+      --destructive: oklch(0.62 0.21 25);
+      --destructive-foreground: oklch(0.97 0 0);
+      --border: oklch(0.31 0.03 253);
+      --input: oklch(0.28 0.03 253);
+      --ring: oklch(0.82 0.17 172);
+      --glow: oklch(0.82 0.17 172 / 0.28);
+      --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+
+    .dark { color-scheme: dark; }
+    .light {
+      color-scheme: light;
+      --background: oklch(0.98 0.006 250);
+      --foreground: oklch(0.2 0.03 253);
+      --surface: oklch(0.94 0.01 250);
+      --card: oklch(1 0 0);
+      --card-foreground: oklch(0.2 0.03 253);
+      --popover: oklch(1 0 0);
+      --popover-foreground: oklch(0.2 0.03 253);
+      --primary: oklch(0.55 0.15 172);
+      --primary-foreground: oklch(0.98 0.006 250);
+      --secondary: oklch(0.92 0.012 250);
+      --secondary-foreground: oklch(0.2 0.03 253);
+      --muted: oklch(0.93 0.012 250);
+      --muted-foreground: oklch(0.44 0.02 253);
+      --accent: oklch(0.6 0.15 55);
+      --accent-foreground: oklch(0.98 0.006 250);
+      --destructive: oklch(0.55 0.21 25);
+      --destructive-foreground: oklch(0.98 0 0);
+      --border: oklch(0.88 0.012 250);
+      --input: oklch(0.9 0.012 250);
+      --ring: oklch(0.55 0.15 172);
+      --glow: oklch(0.55 0.15 172 / 0.22);
+    }
+
+    * { box-sizing: border-box; border-color: var(--border); }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background-color: var(--background);
+      color: var(--foreground);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.5;
+    }
+    ::selection { background: var(--primary); color: var(--primary-foreground); }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    .container { max-width: 72rem; margin-inline: auto; padding-inline: 1.25rem; }
+    .section { padding-block: 6rem; }
+
+    #scroll-progress {
+      position: fixed; inset: 0 0 auto 0; height: 2px; z-index: 50;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      width: 0; transition: width .15s;
+    }
+
+    header {
+      position: fixed; inset: 0 0 auto 0; z-index: 40;
+      transition: background-color .3s, border-color .3s, backdrop-filter .3s;
+      background-color: transparent;
+    }
+    header.scrolled {
+      border-bottom: 1px solid var(--border);
+      background-color: color-mix(in oklab, var(--background) 80%, transparent);
+      backdrop-filter: blur(20px);
+    }
+    nav.nav {
+      max-width: 72rem; margin-inline: auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.25rem;
+    }
+    .brand { display: flex; align-items: center; gap: .5rem; font-family: var(--font-mono); letter-spacing: -.02em; }
+    .brand svg { color: var(--primary); }
+    .brand span { font-size: 1rem; font-weight: 600; letter-spacing: .04em; color: var(--foreground); }
+    .nav-links { display: none; align-items: center; gap: 1.75rem; list-style: none; margin: 0; padding: 0; }
+    .nav-links a { position: relative; font-size: .875rem; color: var(--muted-foreground); transition: color .2s; }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-links a::after { content: ""; position: absolute; left: 0; bottom: -6px; height: 1px; width: 0; background: var(--primary); transition: width .2s; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-actions { display: none; align-items: center; gap: .5rem; }
+    .icon-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 1px solid var(--border); border-radius: var(--radius-md);
+      color: var(--muted-foreground); background: transparent;
+      transition: color .2s, border-color .2s;
+    }
+    .icon-btn:hover { color: var(--primary); border-color: color-mix(in oklab, var(--primary) 40%, transparent); }
+    .lang-btn {
+      display: inline-flex; align-items: center; gap: .375rem;
+      border: 1px solid var(--border); border-radius: var(--radius-md);
+      padding: .5rem .625rem; font-family: var(--font-mono); font-size: .75rem;
+      font-weight: 500; color: var(--muted-foreground); background: transparent;
+      transition: color .2s, border-color .2s;
+    }
+    .lang-btn:hover { color: var(--primary); border-color: color-mix(in oklab, var(--primary) 40%, transparent); }
+    .icon-btn.sq { padding: .625rem; }
+    .nav-mobile-actions { display: flex; align-items: center; gap: .5rem; }
+    #menu-btn { display: inline-flex; }
+    #mobile-menu {
+      display: none; border-top: 1px solid var(--border);
+      background-color: color-mix(in oklab, var(--background) 95%, transparent);
+      backdrop-filter: blur(20px); list-style: none; margin: 0; padding: .75rem 1.25rem;
+    }
+    #mobile-menu.open { display: block; }
+    #mobile-menu a { display: block; padding: .625rem 0; font-size: .875rem; color: var(--muted-foreground); transition: color .2s; }
+    #mobile-menu a:hover { color: var(--primary); }
+
+    .hero { position: relative; overflow: hidden; padding: 8rem 0 6rem; scroll-margin-top: 4rem; }
+    @media (min-width: 640px) { .hero { padding-top: 10rem; } }
+    .hero::before {
+      content: ""; position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+      height: 420px; width: 820px; border-radius: 50%; opacity: .4; filter: blur(40px);
+      background: radial-gradient(circle, var(--glow), transparent 65%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: relative; display: grid; align-items: center; gap: 3rem;
+      max-width: 72rem; margin-inline: auto; padding-inline: 1.25rem;
+    }
+    @media (min-width: 768px) { .hero-grid { grid-template-columns: 1.4fr 1fr; } }
+    .badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      border: 1px solid var(--border); border-radius: 999px;
+      background-color: color-mix(in oklab, var(--surface) 70%, transparent);
+      padding: .25rem .75rem; font-family: var(--font-mono); font-size: .75rem;
+      color: var(--muted-foreground); margin-bottom: 1.25rem;
+    }
+    .badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--primary); }
+    .hero h1 { margin: 0; font-size: 2.25rem; font-weight: 700; letter-spacing: -.03em; color: var(--foreground); }
+    @media (min-width: 640px) { .hero h1 { font-size: 3.75rem; } }
+    .hero-sub { margin: .75rem 0 0; font-size: 1.125rem; color: var(--muted-foreground); }
+    @media (min-width: 640px) { .hero-sub { font-size: 1.25rem; } }
+    .terminal {
+      margin-top: 1.5rem; max-width: 36rem; border: 1px solid var(--border);
+      border-radius: var(--radius-lg); background-color: color-mix(in oklab, var(--surface) 60%, transparent);
+      padding: 1rem; font-family: var(--font-mono); font-size: .875rem;
+    }
+    .terminal .role { color: var(--primary); }
+    .terminal .cursor { display: inline-block; margin-left: 2px; width: .6ch; animation: caret 1s steps(1) infinite; }
+    .hero-intro { margin: 1.5rem 0 0; max-width: 36rem; font-size: 1rem; line-height: 1.6; color: var(--muted-foreground); }
+    .btn-row { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-top: 2rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      border-radius: var(--radius-md); padding: .625rem 1.25rem;
+      font-size: .875rem; font-weight: 500; transition: transform .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--primary); color: var(--primary-foreground); }
+    .btn-outline { background: transparent; border: 1px solid color-mix(in oklab, var(--primary) 40%, transparent); color: var(--primary); }
+    .btn-outline:hover { background: color-mix(in oklab, var(--primary) 10%, transparent); }
+    .btn-whatsapp { background: #25D366; color: #fff; }
+    .btn-icon { padding: .6875rem; }
+    .contact-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; font-family: var(--font-mono); font-size: .75rem; color: var(--muted-foreground); }
+    .contact-meta a, .contact-meta span { display: inline-flex; align-items: center; gap: .375rem; transition: color .2s; }
+    .contact-meta a:hover { color: var(--primary); }
+    .contact-meta svg { color: var(--primary); }
+    .profile-wrap { position: relative; margin-inline: auto; width: 14rem; }
+    @media (min-width: 640px) { .profile-wrap { width: 18rem; } }
+    .profile-img {
+      border-radius: 999px; overflow: hidden;
+      box-shadow: 0 0 0 1px color-mix(in oklab, var(--primary) 35%, transparent), 0 18px 60px -22px var(--glow);
+    }
+    .profile-img img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1/1; }
+
+    .section-title { margin-bottom: 2.5rem; }
+    .section-title .row { display: flex; align-items: baseline; gap: .75rem; }
+    .section-title .num { font-family: var(--font-mono); font-size: .875rem; color: var(--primary); }
+    .section-title h2 { margin: 0; font-size: 1.5rem; font-weight: 600; letter-spacing: -.02em; }
+    @media (min-width: 640px) { .section-title h2 { font-size: 1.875rem; } }
+    .section-title .line { margin-left: .5rem; height: 1px; flex: 1; background: linear-gradient(90deg, var(--border), transparent); }
+
+    .about-grid { display: grid; gap: 2rem; }
+    @media (min-width: 768px) { .about-grid { grid-template-columns: 1.5fr 1fr; } }
+    .about-text { font-size: 1rem; line-height: 1.65; color: var(--muted-foreground); }
+    .info-card {
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      background: var(--card); padding: 1.25rem; font-family: var(--font-mono); font-size: .875rem;
+    }
+    .info-card li { display: flex; justify-content: space-between; gap: 1rem; padding: .5rem 0; border-bottom: 1px solid color-mix(in oklab, var(--border) 60%, transparent); list-style: none; }
+    .info-card li:last-child { border-bottom: 0; }
+    .info-card li span:first-child { color: var(--muted-foreground); }
+    .info-card li span:last-child { color: var(--primary); }
+
+    .timeline { position: relative; border-left: 1px solid var(--border); padding-left: 1.5rem; }
+    @media (min-width: 640px) { .timeline { padding-left: 2.5rem; } }
+    .exp-item { position: relative; margin-bottom: 2rem; }
+    .exp-item:last-child { margin-bottom: 0; }
+    .exp-item::before {
+      content: ""; position: absolute; left: -31px; top: 1.5rem;
+      width: 12px; height: 12px; border-radius: 50%;
+      border: 2px solid var(--primary); background: var(--background);
+    }
+    @media (min-width: 640px) { .exp-item::before { left: -47px; } }
+    .exp-card {
+      border: 1px solid var(--border); border-radius: var(--radius-xl);
+      background: var(--card); padding: 1.5rem;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+    }
+    .exp-card:hover { transform: translateY(-4px); border-color: color-mix(in oklab, var(--primary) 40%, transparent); box-shadow: 0 24px 60px -32px var(--glow); }
+    .exp-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem; }
+    .exp-head h3 { margin: 0; font-size: 1.125rem; font-weight: 600; }
+    .exp-head h3 svg { margin-right: .5rem; color: var(--primary); vertical-align: -.15em; }
+    .exp-period { font-family: var(--font-mono); font-size: .75rem; color: var(--accent); }
+    .exp-company { margin: .25rem 0 0; font-size: .875rem; color: var(--muted-foreground); }
+    .exp-list { margin: 1rem 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: .625rem; }
+    .exp-list li { font-size: .875rem; line-height: 1.6; color: var(--muted-foreground); }
+    .exp-list li .label { font-family: var(--font-mono); font-size: .75rem; color: var(--primary); }
+
+    .formations-grid { display: grid; gap: 1.25rem; }
+    @media (min-width: 768px) { .formations-grid { grid-template-columns: 1fr 1fr; } }
+    .formation-card {
+      height: 100%; border: 1px solid var(--border); border-radius: var(--radius-xl);
+      background: var(--card); padding: 1.5rem;
+      transition: transform .2s, border-color .2s;
+    }
+    .formation-card:hover { transform: translateY(-4px); border-color: color-mix(in oklab, var(--accent) 40%, transparent); }
+    .formation-card svg { color: var(--accent); }
+    .formation-card h3 { margin: .75rem 0 0; font-size: 1rem; font-weight: 600; line-height: 1.3; }
+    .formation-card .school { margin: .25rem 0 0; font-size: .875rem; color: var(--muted-foreground); }
+    .formation-card .period { margin: .25rem 0 0; font-family: var(--font-mono); font-size: .75rem; color: var(--primary); }
+    .formation-card .detail { margin: .75rem 0 0; font-size: .875rem; line-height: 1.6; color: var(--muted-foreground); }
+
+    .skills-grid { display: grid; gap: 1.25rem; }
+    @media (min-width: 640px) { .skills-grid { grid-template-columns: 1fr 1fr; } }
+    .skill-card {
+      height: 100%; border: 1px solid var(--border); border-radius: var(--radius-xl);
+      background: var(--card); padding: 1.5rem;
+      transition: transform .2s, border-color .2s;
+    }
+    .skill-card:hover { transform: translateY(-4px); border-color: color-mix(in oklab, var(--primary) 40%, transparent); }
+    .skill-head { display: flex; align-items: center; gap: .75rem; }
+    .skill-ico { display: inline-flex; background: color-mix(in oklab, var(--primary) 10%, transparent); color: var(--primary); border-radius: var(--radius-md); padding: .5rem; }
+    .skill-head h3 { margin: 0; font-weight: 600; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+    .skill-tags li {
+      border: 1px solid var(--border); border-radius: var(--radius-md);
+      background: var(--surface); padding: .25rem .625rem;
+      font-family: var(--font-mono); font-size: .75rem; color: var(--muted-foreground);
+    }
+    .languages-card { margin-top: 2rem; }
+    @media (min-width: 640px) { .languages-card { max-width: 28rem; } }
+    .languages-card .card { border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--card); padding: 1.5rem; }
+    .languages-card h3 { margin: 0; display: flex; align-items: center; gap: .5rem; font-weight: 600; }
+    .languages-card h3 svg { color: var(--primary); }
+    .lang-row { margin-top: 1rem; }
+    .lang-top { display: flex; align-items: center; justify-content: space-between; font-size: .875rem; }
+    .lang-top .pct { font-family: var(--font-mono); font-size: .75rem; color: var(--accent); }
+    .bar { margin-top: .5rem; height: 6px; width: 100%; overflow: hidden; border-radius: 999px; background: var(--muted); }
+    .bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--primary), var(--accent)); }
+
+    .projects-grid { display: grid; gap: 1.25rem; }
+    @media (min-width: 768px) { .projects-grid { grid-template-columns: 1fr 1fr; } }
+    .project-card {
+      display: flex; flex-direction: column; height: 100%;
+      border: 1px solid var(--border); border-radius: var(--radius-xl);
+      background: var(--card); padding: 1.5rem;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+    }
+    .project-card:hover { transform: translateY(-4px); border-color: color-mix(in oklab, var(--primary) 40%, transparent); box-shadow: 0 24px 60px -32px var(--glow); }
+    .project-head { display: flex; align-items: flex-start; gap: .75rem; }
+    .project-ico { display: inline-flex; background: color-mix(in oklab, var(--primary) 10%, transparent); color: var(--primary); border-radius: var(--radius-md); padding: .5rem; flex-shrink: 0; }
+    .project-head h3 { margin: 0; font-size: 1rem; font-weight: 600; line-height: 1.3; }
+    .project-ctx { margin: .125rem 0 0; font-family: var(--font-mono); font-size: .75rem; color: var(--accent); }
+    .project-desc { margin: 1rem 0 0; flex: 1; font-size: .875rem; line-height: 1.6; color: var(--muted-foreground); }
+    .project-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+    .project-tags li {
+      border: 1px solid var(--border); border-radius: var(--radius-md);
+      background: var(--surface); padding: .25rem .625rem;
+      font-family: var(--font-mono); font-size: .75rem; color: var(--muted-foreground);
+    }
+    .project-link { margin-top: 1rem; display: inline-flex; align-items: center; gap: .5rem; font-family: var(--font-mono); font-size: .75rem; color: var(--primary); }
+    .project-link:hover { text-decoration: underline; }
+
+    .contact-grid { display: grid; gap: 2rem; }
+    @media (min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+    .form-card, .info-card-big { border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--card); padding: 1.5rem; }
+    .form-field { margin-bottom: 1rem; }
+    .form-field label { display: block; font-family: var(--font-mono); font-size: .75rem; color: var(--muted-foreground); margin-bottom: .25rem; }
+    .form-field input, .form-field textarea {
+      width: 100%; border: 1px solid var(--input); border-radius: var(--radius-md);
+      background: var(--background); padding: .5rem .75rem; font-size: .875rem; font-family: inherit;
+      color: var(--foreground); outline: none; transition: border-color .2s;
+    }
+    .form-field input:focus, .form-field textarea:focus { border-color: var(--primary); }
+    .form-field textarea { resize: none; }
+    .form-note { font-family: var(--font-mono); font-size: .75rem; color: var(--primary); margin-top: .75rem; }
+    .contact-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1rem; font-size: .875rem; }
+    .contact-list li { display: flex; align-items: center; gap: .75rem; }
+    .contact-list li svg { color: var(--primary); flex-shrink: 0; }
+    .contact-list a:hover { color: var(--primary); }
+    .cv-link { margin-top: 1.5rem; display: inline-flex; align-items: center; gap: .5rem; border: 1px solid color-mix(in oklab, var(--primary) 40%, transparent); border-radius: var(--radius-md); padding: .625rem 1.25rem; font-size: .875rem; font-weight: 500; color: var(--primary); }
+    .cv-link:hover { background: color-mix(in oklab, var(--primary) 10%, transparent); }
+
+    footer { border-top: 1px solid var(--border); padding: 2rem 0; }
+    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; font-family: var(--font-mono); font-size: .75rem; color: var(--muted-foreground); }
+    .footer-social { display: flex; align-items: center; gap: .75rem; }
+    .footer-social a { transition: color .2s; }
+    .footer-social a:hover { color: var(--primary); }
+
+    #back-top {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 40;
+      border-radius: 999px; background: var(--surface); color: var(--primary);
+      padding: .75rem; border: none;
+      box-shadow: 0 0 0 1px color-mix(in oklab, var(--primary) 35%, transparent), 0 18px 60px -22px var(--glow);
+      transition: transform .2s; display: none;
+    }
+    #back-top.show { display: inline-flex; }
+    #back-top:hover { transform: translateY(-2px); }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+    .reveal[data-visible="true"] { opacity: 1; transform: none; }
+
+    @keyframes caret { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+
+    .svg-inline { width: 1em; height: 1em; display: inline-block; vertical-align: -.125em; }
+
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+      .nav-actions { display: flex; }
+      .nav-mobile-actions { display: none; }
+      #menu-btn { display: none; }
+    }
+  </style>
+</head>
+<body class="dark">
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('fc-portfolio-theme');
+        var theme = saved === 'light' || saved === 'dark'
+          ? saved
+          : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.classList.toggle('light', theme === 'light');
+        document.documentElement.classList.toggle('dark', theme !== 'light');
+      } catch (e) {}
+    })();
+  </script>
+
+  <div id="scroll-progress"></div>
+
+  <header id="site-header">
+    <nav class="nav">
+      <a href="#accueil" class="brand">
+        <svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+        <span>F.CADJAME</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#apropos">A propos</a></li>
+        <li><a href="#experiences">Experiences</a></li>
+        <li><a href="#formations">Etudes</a></li>
+        <li><a href="#competences">Competences</a></li>
+        <li><a href="#realisations">Realisations</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="lang-toggle" class="lang-btn" type="button" aria-label="Changer de langue">
+          <svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span id="lang-label">FR</span>
+        </button>
+        <button class="icon-btn sq" id="theme-toggle" type="button" aria-label="Changer de theme"></button>
+      </div>
+      <div class="nav-mobile-actions">
+        <button class="lang-btn" id="lang-toggle-mobile" type="button" aria-label="Changer de langue">
+          <span id="lang-label-mobile">FR</span>
+        </button>
+        <button class="icon-btn sq" id="theme-toggle-mobile" type="button" aria-label="Changer de theme"></button>
+        <button class="icon-btn sq" id="menu-btn" type="button" aria-label="Ouvrir le menu">
+          <svg id="icon-open" class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="icon-close" class="svg-inline" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </nav>
+    <ul id="mobile-menu"></ul>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="accueil" class="hero">
+      <div class="hero-grid">
+        <div>
+          <p class="badge"><span class="dot"></span><span id="badge">Bobigny 93000 - mobilite Ile-de-France / France</span></p>
+          <h1>Florentin CADJAME</h1>
+          <p class="hero-sub" id="hero-title">Ingenieur Systemes, Reseaux &amp; Cybersecurite</p>
+          <div class="terminal">
+            <div><span id="typed-role" class="role"></span><span class="cursor">▌</span></div>
+          </div>
+          <p class="hero-intro" id="hero-intro">Je conçois, j'exploite et je securise les infrastructures informatiques - du reseau au datacentre virtualise, jusqu'a la detection des menaces.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" id="cv-btn" href="./assets/cv-florentin-cadjame.pdf" download>
+              <svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              <span id="cv-btn-text">Telecharger mon CV</span>
+            </a>
+            <a class="btn btn-outline" href="#contact"><span id="contact-btn-text">Me contacter</span></a>
+            <a class="btn btn-whatsapp" href="https://wa.me/33745694758" target="_blank" rel="noreferrer">
+              <svg class="svg-inline" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.868-2.03-.967-.273-.099-.472-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.05 22h-.005a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374A9.86 9.86 0 0 1 2.1 12.05C2.1 6.529 6.579 2.05 12.1 2.05c2.652 0 5.144 1.033 7.019 2.91a9.82 9.82 0 0 1 2.9 6.99c-.003 5.523-4.48 10.05-9.97 10.05zM12.1 0h-.05C5.469.03.1 5.4.1 12.02c0 2.153.565 4.254 1.635 6.096L0 24l6.028-1.575a11.94 11.94 0 0 0 5.997 1.605h.005c6.628 0 12-5.373 12-12 0-3.207-1.25-6.222-3.518-8.487A11.93 11.93 0 0 0 12.1 0z"/></svg>
+              <span id="whatsapp-btn-text">WhatsApp</span>
+            </a>
+            <a class="btn btn-icon icon-btn" href="https://www.linkedin.com/in/florentin-cadjame-48a0aa111/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <svg class="svg-inline" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.551V9h3.568zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg>
+            </a>
+            <a class="btn btn-icon icon-btn" href="mailto:fcadjame@gmail.com" aria-label="Email">
+              <svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+            </a>
+          </div>
+          <div class="contact-meta">
+            <a href="https://wa.me/33745694758" target="_blank" rel="noreferrer">
+              <svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              07 45 69 47 58
+            </a>
+            <a href="mailto:fcadjame@gmail.com">
+              <svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+              fcadjame@gmail.com
+            </a>
+            <span>
+              <svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Bobigny (93), France
+            </span>
+          </div>
+        </div>
+        <div class="profile-wrap">
+          <div class="profile-img">
+            <img src="./assets/florentin-cadjame.jpg" alt="Ingenieur Systemes, Reseaux &amp; Cybersecurite" width="768" height="768" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="apropos" class="section">
+      <div class="container">
+        <div class="section-title reveal"><div class="row"><span class="num">01.</span><h2 id="about-title">A propos</h2><span class="line"></span></div></div>
+        <div class="about-grid">
+          <div class="reveal"><p class="about-text" id="about-text">Ingenieur Systemes, Reseaux et Cybersecurite, je participe activement a la conception, l'exploitation et la securisation des infrastructures informatiques : architectures reseau et VLAN, administration Windows Server et Linux, virtualisation et haute disponibilite, supervision, sauvegarde et detection des menaces.</p></div>
+          <div class="reveal" style="transition-delay:120ms">
+            <ul class="info-card">
+              <li><span id="info-loc-label">localisation</span><span id="info-loc">Bobigny 93000</span></li>
+              <li><span id="info-mob-label">mobilite</span><span id="info-mob">Ile-de-France / France</span></li>
+              <li><span id="info-av-label">disponibilite</span><span id="info-av">a l'ecoute d'portunites</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCES -->
+    <section id="experiences" class="section">
+      <div class="container">
+        <div class="section-title reveal"><div class="row"><span class="num">02.</span><h2 id="exp-title">Experiences</h2><span class="line"></span></div></div>
+        <div class="timeline" id="experiences-list"></div>
+      </div>
+    </section>
+
+    <!-- FORMATIONS -->
+    <section id="formations" class="section">
+      <div class="container">
+        <div class="section-title reveal"><div class="row"><span class="num">03.</span><h2 id="form-title">Etudes &amp; Diplomes</h2><span class="line"></span></div></div>
+        <div class="formations-grid" id="formations-list"></div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="competences" class="section">
+      <div class="container">
+        <div class="section-title reveal"><div class="row"><span class="num">04.</span><h2 id="skills-title">Competences techniques</h2><span class="line"></span></div></div>
+        <div class="skills-grid" id="skills-list"></div>
+        <div class="languages-card reveal">
+          <div class="card">
+            <h3 id="languages-title">
+              <svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span id="languages-title-text">Langues</span>
+            </h3>
+            <div class="lang-row">
+              <div class="lang-top"><span id="lang-fr">Francais</span><span class="pct" id="pct-fr">100 %</span></div>
+              <div class="bar"><div class="bar-fill" id="bar-fr" style="width:100%"></div></div>
+            </div>
+            <div class="lang-row">
+              <div class="lang-top"><span id="lang-en">Anglais</span><span class="pct" id="pct-en">40 %</span></div>
+              <div class="bar"><div class="bar-fill" id="bar-en" style="width:40%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="realisations" class="section">
+      <div class="container">
+        <div class="section-title reveal"><div class="row"><span class="num">05.</span><h2 id="projects-title">Realisations &amp; Projets</h2><span class="line"></span></div></div>
+        <div class="projects-grid" id="projects-list"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-title reveal"><div class="row"><span class="num">06.</span><h2 id="contact-title">Contact</h2><span class="line"></span></div></div>
+        <div class="contact-grid">
+          <div class="reveal">
+            <form class="form-card" id="contact-form">
+              <div class="form-field">
+                <label for="name" id="label-name">nom</label>
+                <input id="name" name="name" required />
+              </div>
+              <div class="form-field">
+                <label for="email" id="label-email">email</label>
+                <input id="email" name="email" type="email" required />
+              </div>
+              <div class="form-field">
+                <label for="message" id="label-message">message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                <svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4zM22 2 11 13"/></svg>
+                <span id="send-btn">Envoyer le message</span>
+              </button>
+              <p class="form-note" id="form-note" style="display:none">Votre logiciel de messagerie s'ouvre avec le message pre-rempli.</p>
+            </form>
+          </div>
+          <div class="reveal" style="transition-delay:120ms">
+            <div class="info-card-big">
+              <ul class="contact-list">
+                <li>
+                  <svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+                  <a href="mailto:fcadjame@gmail.com">fcadjame@gmail.com</a>
+                </li>
+                <li>
+                  <svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  <a href="tel:+33745694758">07 45 69 47 58</a>
+                </li>
+                <li>
+                  <svg class="svg-inline" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.868-2.03-.967-.273-.099-.472-.148-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.05 22h-.005a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374A9.86 9.86 0 0 1 2.1 12.05C2.1 6.529 6.579 2.05 12.1 2.05c2.652 0 5.144 1.033 7.019 2.91a9.82 9.82 0 0 1 2.9 6.99c-.003 5.523-4.48 10.05-9.97 10.05zM12.1 0h-.05C5.469.03.1 5.4.1 12.02c0 2.153.565 4.254 1.635 6.096L0 24l6.028-1.575a11.94 11.94 0 0 0 5.997 1.605h.005c6.628 0 12-5.373 12-12 0-3.207-1.25-6.222-3.518-8.487A11.93 11.93 0 0 0 12.1 0z"/></svg>
+                  <a href="https://wa.me/33745694758" target="_blank" rel="noreferrer" id="whatsapp-chat">Discuter sur WhatsApp</a>
+                </li>
+                <li>
+                  <svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span id="address">22 avenue Paul Vaillant Couturier, 93000 Bobigny</span>
+                </li>
+                <li>
+                  <svg class="svg-inline" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.551V9h3.568zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg>
+                  <a href="https://www.linkedin.com/in/florentin-cadjame-48a0aa111/" target="_blank" rel="noreferrer" id="linkedin-profile">Profil LinkedIn</a>
+                </li>
+              </ul>
+              <a class="cv-link" href="./assets/cv-florentin-cadjame.pdf" download>
+                <svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                <span id="cv-link-text">Telecharger le CV en PDF</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Florentin CADJAME <span id="rights">- Tous droits reserves.</span></p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/florentin-cadjame-48a0aa111/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <svg class="svg-inline" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.551V9h3.568zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg>
+        </a>
+        <a href="mailto:fcadjame@gmail.com" aria-label="Email">
+          <svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-top" type="button" aria-label="Retour en haut">
+    <svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var CV = "./assets/cv-florentin-cadjame.pdf";
+      var LINKEDIN = "https://www.linkedin.com/in/florentin-cadjame-48a0aa111/";
+      var WHATSAPP = "https://wa.me/33745694758";
+
+      var FR = {
+        nav: ["Accueil","A propos","Experiences","Etudes","Competences","Realisations","Contact"],
+        hero: {
+          badge: "Bobigny 93000 - mobilite Ile-de-France / France",
+          title: "Ingenieur Systemes, Reseaux & Cybersecurite",
+          roles: [
+            "Ingenieur Systemes & Reseaux",
+            "Administrateur Windows Server",
+            "Expert Virtualisation (Proxmox, VMware)",
+            "Cybersecurite - IDS/IPS, SIEM, EDR"
+          ],
+          intro: "Je conçois, j'exploite et je securise les infrastructures informatiques - du reseau au datacentre virtualise, jusqu'a la detection des menaces.",
+          downloadCv: "Telecharger mon CV",
+          contactMe: "Me contacter",
+          whatsapp: "WhatsApp"
+        },
+        about: {
+          sectionTitle: "A propos",
+          paragraph: "Ingenieur Systemes, Reseaux et Cybersecurite, je participe activement a la conception, l'exploitation et la securisation des infrastructures informatiques : architectures reseau et VLAN, administration Windows Server et Linux, virtualisation et haute disponibilite, supervision, sauvegarde et detection des menaces.",
+          info: [["localisation","Bobigny 93000"],["mobilite","Ile-de-France / France"],["disponibilite","a l'ecoute d'portunites"]]
+        },
+        experiences: {
+          sectionTitle: "Experiences",
+          items: [
+            { role:"Ingenieur Systemes, Reseaux et Cybersecurite", company:"Dootri - Lyon, France", period:"Depuis fevrier 2025",
+              groups:[
+                ["Securite reseau","Mise en oeuvre et administration de solutions de securite reseau (FortiGate 40F, Cisco ASA, pfSense), configuration de tunnels IPsec."],
+                ["Cybersecurite","Tests d'intrusion en environnement controle, inspection des traffics reseau (Suricata / pfSense - IDS/IPS), collecte et analyse de donnees avec Splunk."],
+                ["Architecture reseau","Conception et administration d'architectures reseau avec routage inter-VLAN, routage statique et dynamique (RIP, OSPF, EIGRP)."],
+                ["Systemes Windows","Windows Server : Active Directory (AD DS), strategies de groupe (GPO), services DNS, deploiement et supervision via SCCM, clusters de basculement et equilibrage de charge (HA sur Windows Server 2022)."],
+                ["Stockage, supervision & sauvegarde","TrueNAS, Zabbix et Veeam Backup."],
+                ["Virtualisation","Installation, configuration et administration d'environnements VMware, Hyper-V et Proxmox : machines virtuelles, reseaux virtuels et haute disponibilite."],
+                ["Cloud","Administration Microsoft 365, Entra ID (Azure AD), virtualisation et sauvegarde cloud (notions)."]
+              ]},
+            { role:"Responsable Infrastructures Reseaux et Systemes", company:"3MAUC - Cotonou, Benin", period:"Octobre 2023 - Octobre 2024",
+              groups:[
+                ["Systemes","Administration Windows & Linux : installation, configuration, mises a jour, gestion des comptes et droits d'acces (Active Directory)."],
+                ["Virtualisation","Gestion d'environnements virtualises VMware et Hyper-V."],
+                ["Reseaux","Configuration et maintenance des switches, routeurs et firewalls, mise en place de VLAN, routage statique et dynamique (OSPF, RIP, EIGRP)."],
+                ["Interconnexion & securite","Connectivite entre sites distants, configuration de VPN site-to-site et securisation des communications."]
+              ]},
+            { role:"Administrateur Systemes et Reseaux", company:"SET ASSET - Bruxelles / Cotonou, Benin", period:"Decembre 2019 - Decembre 2022",
+              groups:[
+                ["Securite & administration systeme","Strategies de securite (GPO, antivirus, audit), gestion des services DNS, DHCP, FTP et attribution d'adresses IP fixes/dynamiques."],
+                ["Virtualisation","Deploiement et gestion d'environnements VMware et Hyper-V (serveurs et postes de travail)."],
+                ["Reseaux","Configuration et maintenance des switches, routeurs et firewalls, VLAN, routage statique et dynamique (OSPF, RIP), surveillance du trafic avec Wireshark."],
+                ["Developpement web","Creation et mise en ligne du site vitrine de SETASSET (afroassets.com)."]
+              ]}
+          ]
+        },
+        formations: {
+          sectionTitle: "Etudes & Diplomes",
+          items: [
+            { title:"Master Ingenieur Systemes, Reseaux et Cybersecurite", school:"Institut F2I - Paris", period:"2026", detail:"Infrastructures systemes et reseaux, securisation des systemes d'information, supervision et haute disponibilite." },
+            { title:"Master Ingenieur Systemes, Reseaux", school:"Institut Cerco Abidjan - Abidjan", period:"2019", detail:"Fondamentaux reseaux, administration systemes et maintenance informatique." }
+          ]
+        },
+        skills: {
+          sectionTitle: "Competences techniques",
+          items: [
+            { key:"systemes", title:"Systemes", items:["Windows Server","Active Directory","Linux Ubuntu/Debian","DNS / DHCP","GPO","HA"] },
+            { key:"reseau", title:"Reseau", items:["TCP/IP","VLAN","VPN","pfSense","Routage / NAT","Cisco","HA"] },
+            { key:"virtualisation", title:"Virtualisation", items:["Proxmox VE","Hyper-V","VMware ESXi","Gestion de VM","Snapshots","Stockage virtualise","HA"] },
+            { key:"cybersecurite", title:"Cybersecurite", items:["Suricata / pfSense (IDS, IPS)","Splunk (collecte & correlation)","EDR - Windows Defender","Veeam Backup - PRA/PCA"] }
+          ],
+          languagesTitle: "Langues",
+          languages: [["Francais","100 %",100],["Anglais","40 %",40]]
+        },
+        projects: {
+          sectionTitle: "Realisations & Projets",
+          viewSite: "Voir le site",
+          items: [
+            { key:"ceph", title:"Architecture de stockage distribue securise (Ceph / Proxmox VE)", context:"Projet personnel - en cours", description:"Conception d'un cluster de stockage distribue Ceph sur Proxmox VE : replication des donnees, tolerance aux pannes, chiffrement et haute disponibilite pour des environnements virtualises.", tags:["Ceph","Proxmox VE","HA","Stockage"] },
+            { key:"interco", title:"Interconnexion securisee de sites distants", context:"Dootri", description:"Tunnels IPsec entre sites via FortiGate 40F, Cisco ASA et pfSense, routage inter-VLAN (RIP, OSPF, EIGRP) et politiques de filtrage adaptees aux flux metiers.", tags:["FortiGate 40F","Cisco ASA","pfSense","IPsec"] },
+            { key:"detection", title:"Detection des menaces et analyse de logs", context:"Dootri", description:"Inspection du trafic reseau avec Suricata sur pfSense (IDS/IPS), collecte et correlation des evenements dans Splunk, surveillance des terminaux via Windows Defender (EDR).", tags:["Suricata","IDS/IPS","Splunk","EDR"] },
+            { key:"supervision", title:"Supervision, sauvegarde et haute disponibilite", context:"Dootri", description:"Supervision Zabbix, stockage TrueNAS, sauvegardes Veeam Backup et clusters de basculement / equilibrage de charge sous Windows Server 2022 (PRA/PCA).", tags:["Zabbix","TrueNAS","Veeam","Failover Cluster"] },
+            { key:"ad", title:"Infrastructure Active Directory & deploiement automatise", context:"Dootri / 3MAUC", description:"Structuration de l'annuaire AD (OU, groupes, GPO), services DNS, deploiement d'applications et supervision des postes via SCCM.", tags:["Active Directory","GPO","DNS","SCCM"] },
+            { key:"afroassets", title:"Site vitrine SETASSET - afroassets.com", context:"SET ASSET", description:"Conception, mise en ligne et maintenance du site vitrine : hebergement, nom de domaine, securisation HTTPS et mises a jour de contenu.", tags:["Web","Hebergement","HTTPS","Nom de domaine"], linkLabel:"Voir le site", link:"https://afroassets.com" }
+          ]
+        },
+        contact: {
+          sectionTitle: "Contact",
+          formName: "nom", formEmail: "email", formMessage: "message", send: "Envoyer le message",
+          sentNotice: "Votre logiciel de messagerie s'ouvre avec le message pre-rempli.",
+          whatsappChat: "Discuter sur WhatsApp", linkedinProfile: "Profil LinkedIn",
+          downloadCv: "Telecharger le CV en PDF",
+          address: "22 avenue Paul Vaillant Couturier, 93000 Bobigny"
+        },
+        footer: "Tous droits reserves."
+      };
+
+      var EN = {
+        nav: ["Home","About","Experience","Education","Skills","Projects","Contact"],
+        hero: {
+          badge: "Bobigny 93000 - available across Ile-de-France / France",
+          title: "Systems, Network & Cybersecurity Engineer",
+          roles: [
+            "Systems & Network Engineer",
+            "Windows Server Administrator",
+            "Virtualization Expert (Proxmox, VMware)",
+            "Cybersecurity - IDS/IPS, SIEM, EDR"
+          ],
+          intro: "I design, operate and secure IT infrastructures - from the network to the virtualized datacenter, all the way to threat detection.",
+          downloadCv: "Download my CV",
+          contactMe: "Contact me",
+          whatsapp: "WhatsApp"
+        },
+        about: {
+          sectionTitle: "About",
+          paragraph: "As a Systems, Network and Cybersecurity Engineer, I actively contribute to the design, operation and security of IT infrastructures: network architectures and VLANs, Windows Server and Linux administration, virtualization and high availability, monitoring, backup and threat detection.",
+          info: [["location","Bobigny 93000"],["mobility","Ile-de-France / France"],["availability","open to new opportunities"]]
+        },
+        experiences: {
+          sectionTitle: "Experience",
+          items: [
+            { role:"Systems, Network and Cybersecurity Engineer", company:"Dootri - Lyon, France", period:"Since February 2025",
+              groups:[
+                ["Network security","Implementation and administration of network security solutions (FortiGate 40F, Cisco ASA, pfSense), including IPsec tunnel configuration."],
+                ["Cybersecurity","Penetration testing in a controlled environment, network traffic inspection (Suricata / pfSense - IDS/IPS), data collection and analysis with Splunk."],
+                ["Network architecture","Design and administration of network architectures with inter-VLAN routing, static and dynamic routing (RIP, OSPF, EIGRP)."],
+                ["Windows systems","Windows Server: Active Directory (AD DS), Group Policy (GPO), DNS services, deployment and monitoring via SCCM, failover clustering and load balancing (HA on Windows Server 2022)."],
+                ["Storage, monitoring & backup","TrueNAS, Zabbix and Veeam Backup."],
+                ["Virtualization","Installation, configuration and administration of VMware, Hyper-V and Proxmox environments: virtual machines, virtual networks and high availability."],
+                ["Cloud","Administration of Microsoft 365, Entra ID (Azure AD), cloud virtualization and backup (basics)."]
+              ]},
+            { role:"Head of Network & Systems Infrastructure", company:"3MAUC - Cotonou, Benin", period:"October 2023 - October 2024",
+              groups:[
+                ["Systems","Windows & Linux administration: installation, configuration, updates, account and access rights management (Active Directory)."],
+                ["Virtualization","Management of VMware and Hyper-V virtualized environments."],
+                ["Networking","Configuration and maintenance of switches, routers and firewalls, VLAN setup, static and dynamic routing (OSPF, RIP, EIGRP)."],
+                ["Interconnection & security","Connectivity between remote sites, site-to-site VPN configuration and communications security."]
+              ]},
+            { role:"Systems and Network Administrator", company:"SET ASSET - Brussels / Cotonou, Benin", period:"December 2019 - December 2022",
+              groups:[
+                ["Security & system administration","Security policies (GPO, antivirus, auditing), DNS, DHCP, FTP services management and fixed/dynamic IP address allocation."],
+                ["Virtualization","Deployment and management of VMware and Hyper-V environments (servers and workstations)."],
+                ["Networking","Configuration and maintenance of switches, routers and firewalls, VLANs, static and dynamic routing (OSPF, RIP), traffic monitoring with Wireshark."],
+                ["Web development","Design and launch of the SETASSET showcase website (afroassets.com)."]
+              ]}
+          ]
+        },
+        formations: {
+          sectionTitle: "Education",
+          items: [
+            { title:"Master's in Systems, Network and Cybersecurity Engineering", school:"Institut F2I - Paris", period:"2026", detail:"Systems and network infrastructures, information systems security, monitoring and high availability." },
+            { title:"Master's in Systems and Network Engineering", school:"Institut Cerco Abidjan - Abidjan", period:"2019", detail:"Networking fundamentals, systems administration and IT maintenance." }
+          ]
+        },
+        skills: {
+          sectionTitle: "Technical skills",
+          items: [
+            { key:"systemes", title:"Systems", items:["Windows Server","Active Directory","Linux Ubuntu/Debian","DNS / DHCP","GPO","HA"] },
+            { key:"reseau", title:"Network", items:["TCP/IP","VLAN","VPN","pfSense","Routing / NAT","Cisco","HA"] },
+            { key:"virtualisation", title:"Virtualization", items:["Proxmox VE","Hyper-V","VMware ESXi","VM management","Snapshots","Virtualized storage","HA"] },
+            { key:"cybersecurite", title:"Cybersecurity", items:["Suricata / pfSense (IDS, IPS)","Splunk (collection & correlation)","EDR - Windows Defender","Veeam Backup - DR/BC"] }
+          ],
+          languagesTitle: "Languages",
+          languages: [["French","100%",100],["English","40%",40]]
+        },
+        projects: {
+          sectionTitle: "Projects & Achievements",
+          viewSite: "View site",
+          items: [
+            { key:"ceph", title:"Secure distributed storage architecture (Ceph / Proxmox VE)", context:"Personal project - in progress", description:"Design of a Ceph distributed storage cluster on Proxmox VE: data replication, fault tolerance, encryption and high availability for virtualized environments.", tags:["Ceph","Proxmox VE","HA","Storage"] },
+            { key:"interco", title:"Secure remote site interconnection", context:"Dootri", description:"IPsec tunnels between sites via FortiGate 40F, Cisco ASA and pfSense, inter-VLAN routing (RIP, OSPF, EIGRP) and filtering policies tailored to business flows.", tags:["FortiGate 40F","Cisco ASA","pfSense","IPsec"] },
+            { key:"detection", title:"Threat detection and log analysis", context:"Dootri", description:"Network traffic inspection with Suricata on pfSense (IDS/IPS), event collection and correlation in Splunk, endpoint monitoring via Windows Defender (EDR).", tags:["Suricata","IDS/IPS","Splunk","EDR"] },
+            { key:"supervision", title:"Monitoring, backup and high availability", context:"Dootri", description:"Zabbix monitoring, TrueNAS storage, Veeam Backup backups and failover / load-balancing clusters on Windows Server 2022 (DR/BC).", tags:["Zabbix","TrueNAS","Veeam","Failover Cluster"] },
+            { key:"ad", title:"Active Directory infrastructure & automated deployment", context:"Dootri / 3MAUC", description:"Structuring the AD directory (OUs, groups, GPO), DNS services, application deployment and endpoint monitoring via SCCM.", tags:["Active Directory","GPO","DNS","SCCM"] },
+            { key:"afroassets", title:"SETASSET showcase website - afroassets.com", context:"SET ASSET", description:"Design, launch and maintenance of the showcase website: hosting, domain name, HTTPS security and content updates.", tags:["Web","Hosting","HTTPS","Domain name"], linkLabel:"View site", link:"https://afroassets.com" }
+          ]
+        },
+        contact: {
+          sectionTitle: "Contact",
+          formName: "name", formEmail: "email", formMessage: "message", send: "Send message",
+          sentNotice: "Your email client is opening with the pre-filled message.",
+          whatsappChat: "Chat on WhatsApp", linkedinProfile: "LinkedIn profile",
+          downloadCv: "Download CV (PDF)",
+          address: "22 avenue Paul Vaillant Couturier, 93000 Bobigny, France"
+        },
+        footer: "All rights reserved."
+      };
+
+      var dicts = { fr: FR, en: EN };
+      var lang = "fr";
+      var t;
+
+      var ICONS = {
+        briefcase: '<svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
+        grad: '<svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg>',
+        server: '<svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01M6 18h.01"/></svg>',
+        network: '<svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2v6M15 2v6M21 18v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2M3 10h18"/><circle cx="3" cy="10" r="2"/><circle cx="21" cy="10" r="2"/><circle cx="12" cy="13" r="4"/></svg>',
+        monitor: '<svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>',
+        shield: '<svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>',
+        hdd: '<svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12H2M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><path d="M6 16h.01M10 16h.01"/></svg>',
+        activity: '<svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>',
+        globe: '<svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+        external: '<svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>',
+        sun: '<svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>',
+        moon: '<svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></svg>'
+      };
+      var SKILL_ICON_KEYS = { systemes:"server", reseau:"network", virtualisation:"monitor", cybersecurite:"shield" };
+      var PROJECT_ICON_KEYS = { ceph:"hdd", interco:"network", detection:"shield", supervision:"activity", ad:"server", afroassets:"globe" };
+
+      function el(tag, cls, html) {
+        var e = document.createElement(tag);
+        if (cls) e.className = cls;
+        if (html) e.innerHTML = html;
+        return e;
+      }
+
+      function escapeHtml(str) {
+        return String(str).replace(/[&<>"']/g, function (c) {
+          return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c];
+        });
+      }
+
+      function renderExperiences() {
+        var wrap = document.getElementById("experiences-list");
+        wrap.innerHTML = "";
+        t.experiences.items.forEach(function (exp, i) {
+          var item = el("div", "exp-item reveal");
+          item.setAttribute("data-delay", i * 90);
+          var card = el("div", "exp-card");
+          var head = el("div", "exp-head");
+          var h3 = el("h3", null, ICONS.briefcase + escapeHtml(exp.role));
+          var period = el("span", "exp-period", escapeHtml(exp.period));
+          head.appendChild(h3); head.appendChild(period);
+          var company = el("p", "exp-company", escapeHtml(exp.company));
+          var ul = el("ul", "exp-list");
+          exp.groups.forEach(function (g) {
+            var li = el("li", null, '<span class="label">' + escapeHtml(g[0]) + ' \u203A </span>' + escapeHtml(g[1]));
+            ul.appendChild(li);
+          });
+          card.appendChild(head); card.appendChild(company); card.appendChild(ul);
+          item.appendChild(card);
+          wrap.appendChild(item);
+        });
+      }
+
+      function renderFormations() {
+        var wrap = document.getElementById("formations-list");
+        wrap.innerHTML = "";
+        t.formations.items.forEach(function (f, i) {
+          var card = el("article", "formation-card reveal");
+          card.setAttribute("data-delay", i * 90);
+          card.innerHTML =
+            ICONS.grad +
+            '<h3>' + escapeHtml(f.title) + '</h3>' +
+            '<p class="school">' + escapeHtml(f.school) + '</p>' +
+            '<p class="period">' + escapeHtml(f.period) + '</p>' +
+            '<p class="detail">' + escapeHtml(f.detail) + '</p>';
+          wrap.appendChild(card);
+        });
+      }
+
+      function renderSkills() {
+        var wrap = document.getElementById("skills-list");
+        wrap.innerHTML = "";
+        t.skills.items.forEach(function (s, i) {
+          var iconKey = SKILL_ICON_KEYS[s.key] || "server";
+          var card = el("article", "skill-card reveal");
+          card.setAttribute("data-delay", i * 90);
+          var tags = s.items.map(function (it) { return '<li>' + escapeHtml(it) + '</li>'; }).join("");
+          card.innerHTML =
+            '<div class="skill-head"><span class="skill-ico">' + ICONS[iconKey] + '</span><h3>' + escapeHtml(s.title) + '</h3></div>' +
+            '<ul class="skill-tags">' + tags + '</ul>';
+          wrap.appendChild(card);
+        });
+      }
+
+      function renderProjects() {
+        var wrap = document.getElementById("projects-list");
+        wrap.innerHTML = "";
+        t.projects.items.forEach(function (p, i) {
+          var iconKey = PROJECT_ICON_KEYS[p.key] || "globe";
+          var card = el("article", "project-card reveal");
+          card.setAttribute("data-delay", i * 80);
+          var tags = p.tags.map(function (tag) { return '<li>' + escapeHtml(tag) + '</li>'; }).join("");
+          var link = p.link ? '<a class="project-link" href="' + p.link + '" target="_blank" rel="noreferrer">' + ICONS.external + ' ' + escapeHtml(p.linkLabel || t.projects.viewSite) + '</a>' : "";
+          card.innerHTML =
+            '<div class="project-head"><span class="project-ico">' + ICONS[iconKey] + '</span><div><h3>' + escapeHtml(p.title) + '</h3><p class="project-ctx">' + escapeHtml(p.context) + '</p></div></div>' +
+            '<p class="project-desc">' + escapeHtml(p.description) + '</p>' +
+            '<ul class="project-tags">' + tags + '</ul>' +
+            link;
+          wrap.appendChild(card);
+        });
+      }
+
+      function applyLang() {
+        t = dicts[lang];
+        document.documentElement.lang = lang;
+
+        var links = document.querySelectorAll(".nav-links a");
+        t.nav.forEach(function (label, i) { if (links[i]) links[i].textContent = label; });
+
+        var mm = document.getElementById("mobile-menu");
+        mm.innerHTML = "";
+        var anchors = ["accueil","apropos","experiences","formations","competences","realisations","contact"];
+        t.nav.forEach(function (label, i) {
+          var li = el("li");
+          var a = el("a", null, escapeHtml(label));
+          a.href = "#" + anchors[i];
+          a.addEventListener("click", closeMenu);
+          li.appendChild(a);
+          mm.appendChild(li);
+        });
+
+        document.getElementById("lang-label").textContent = lang.toUpperCase();
+        document.getElementById("lang-label-mobile").textContent = lang.toUpperCase();
+
+        document.getElementById("badge").textContent = t.hero.badge;
+        document.getElementById("hero-title").textContent = t.hero.title;
+        document.getElementById("hero-intro").textContent = t.hero.intro;
+        document.getElementById("cv-btn-text").textContent = t.hero.downloadCv;
+        document.getElementById("contact-btn-text").textContent = t.hero.contactMe;
+        document.getElementById("whatsapp-btn-text").textContent = t.hero.whatsapp;
+
+        document.getElementById("about-title").textContent = t.about.sectionTitle;
+        document.getElementById("about-text").textContent = t.about.paragraph;
+        document.getElementById("info-loc-label").textContent = t.about.info[0][0];
+        document.getElementById("info-loc").textContent = t.about.info[0][1];
+        document.getElementById("info-mob-label").textContent = t.about.info[1][0];
+        document.getElementById("info-mob").textContent = t.about.info[1][1];
+        document.getElementById("info-av-label").textContent = t.about.info[2][0];
+        document.getElementById("info-av").textContent = t.about.info[2][1];
+
+        document.getElementById("exp-title").textContent = t.experiences.sectionTitle;
+        document.getElementById("form-title").textContent = t.formations.sectionTitle;
+        document.getElementById("skills-title").textContent = t.skills.sectionTitle;
+        document.getElementById("projects-title").textContent = t.projects.sectionTitle;
+        document.getElementById("contact-title").textContent = t.contact.sectionTitle;
+        document.getElementById("languages-title-text").textContent = t.skills.languagesTitle;
+
+        document.getElementById("lang-fr").textContent = t.skills.languages[0][0];
+        document.getElementById("pct-fr").textContent = t.skills.languages[0][1];
+        document.getElementById("bar-fr").style.width = t.skills.languages[0][2] + "%";
+        document.getElementById("lang-en").textContent = t.skills.languages[1][0];
+        document.getElementById("pct-en").textContent = t.skills.languages[1][1];
+        document.getElementById("bar-en").style.width = t.skills.languages[1][2] + "%";
+
+        document.getElementById("label-name").textContent = t.contact.formName;
+        document.getElementById("label-email").textContent = t.contact.formEmail;
+        document.getElementById("label-message").textContent = t.contact.formMessage;
+        document.getElementById("send-btn").textContent = t.contact.send;
+        document.getElementById("form-note").textContent = t.contact.sentNotice;
+        document.getElementById("whatsapp-chat").textContent = t.contact.whatsappChat;
+        document.getElementById("linkedin-profile").textContent = t.contact.linkedinProfile;
+        document.getElementById("cv-link-text").textContent = t.contact.downloadCv;
+        document.getElementById("address").textContent = t.contact.address;
+        document.getElementById("rights").textContent = " - " + t.footer;
+
+        renderExperiences();
+        renderFormations();
+        renderSkills();
+        renderProjects();
+        observeReveals();
+      }
+
+      function currentTheme() {
+        return document.documentElement.classList.contains("light") ? "light" : "dark";
+      }
+      function paintThemeBtns() {
+        var inner = currentTheme() === "light" ? ICONS.moon : ICONS.sun;
+        var btns = document.querySelectorAll("#theme-toggle, #theme-toggle-mobile");
+        btns.forEach(function (b) { b.innerHTML = inner; });
+      }
+      function toggleTheme() {
+        var isLight = currentTheme() === "light";
+        document.documentElement.classList.toggle("light", !isLight);
+        document.documentElement.classList.toggle("dark", isLight);
+        try { localStorage.setItem("fc-portfolio-theme", !isLight ? "light" : "dark"); } catch (e) {}
+        paintThemeBtns();
+      }
+
+      function closeMenu() {
+        document.getElementById("mobile-menu").classList.remove("open");
+        document.getElementById("icon-open").style.display = "";
+        document.getElementById("icon-close").style.display = "none";
+      }
+      function toggleMenu() {
+        var mm = document.getElementById("mobile-menu");
+        var open = mm.classList.toggle("open");
+        document.getElementById("icon-open").style.display = open ? "none" : "";
+        document.getElementById("icon-close").style.display = open ? "" : "none";
+      }
+
+      var roleIdx = 0, txt = "", deleting = false, roleTimer = null;
+      function typeTick() {
+        var roles = t.hero.roles;
+        var full = roles[roleIdx % roles.length] || "";
+        if (!deleting && txt === full) {
+          roleTimer = setTimeout(function () { deleting = true; typeTick(); }, 1600);
+          return;
+        }
+        if (deleting && txt === "") {
+          deleting = false;
+          roleIdx = (roleIdx + 1) % roles.length;
+          roleTimer = setTimeout(typeTick, 75);
+          return;
+        }
+        txt = deleting ? full.slice(0, txt.length - 1) : full.slice(0, txt.length + 1);
+        document.getElementById("typed-role").textContent = txt;
+        roleTimer = setTimeout(typeTick, deleting ? 40 : 75);
+      }
+      function restartTyping() {
+        clearTimeout(roleTimer);
+        roleIdx = 0; txt = ""; deleting = false;
+        document.getElementById("typed-role").textContent = "";
+        roleTimer = setTimeout(typeTick, 75);
+      }
+
+      function observeReveals() {
+        document.querySelectorAll(".reveal").forEach(function (n) {
+          if (n.getAttribute("data-delay")) n.style.transitionDelay = n.getAttribute("data-delay") + "ms";
+        });
+        if (window.__revealObserver) window.__revealObserver.disconnect();
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.setAttribute("data-visible", "true"); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+        document.querySelectorAll(".reveal").forEach(function (n) { io.observe(n); });
+        window.__revealObserver = io;
+      }
+
+      function onScroll() {
+        var h = document.documentElement;
+        var max = h.scrollHeight - h.clientHeight;
+        var pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+        document.getElementById("scroll-progress").style.width = pct + "%";
+        document.getElementById("site-header").classList.toggle("scrolled", window.scrollY > 24);
+        document.getElementById("back-top").classList.toggle("show", window.scrollY > 600);
+      }
+
+      function toggleLang() {
+        lang = lang === "fr" ? "en" : "fr";
+        try { localStorage.setItem("fc-portfolio-lang", lang); } catch (e) {}
+        applyLang();
+        restartTyping();
+      }
+
+      function init() {
+        var savedLang = null;
+        try { savedLang = localStorage.getItem("fc-portfolio-lang"); } catch (e) {}
+        lang = (savedLang === "fr" || savedLang === "en") ? savedLang : (navigator.language && navigator.language.toLowerCase().startsWith("en") ? "en" : "fr");
+
+        applyLang();
+        paintThemeBtns();
+        restartTyping();
+
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+        document.getElementById("theme-toggle").addEventListener("click", toggleTheme);
+        document.getElementById("theme-toggle-mobile").addEventListener("click", toggleTheme);
+        document.getElementById("menu-btn").addEventListener("click", toggleMenu);
+        document.getElementById("lang-toggle").addEventListener("click", toggleLang);
+        document.getElementById("lang-toggle-mobile").addEventListener("click", toggleLang);
+        document.getElementById("back-top").addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        document.getElementById("contact-form").addEventListener("submit", function (e) {
+          e.preventDefault();
+          var fd = new FormData(this);
+          var subject = encodeURIComponent("Contact portfolio - " + fd.get("name"));
+          var body = encodeURIComponent(fd.get("message") + "\n\n-\n" + fd.get("name") + " (" + fd.get("email") + ")");
+          window.location.href = "mailto:fcadjame@gmail.com?subject=" + subject + "&body=" + body;
+          document.getElementById("form-note").style.display = "block";
+        });
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+</body>
+</html>
