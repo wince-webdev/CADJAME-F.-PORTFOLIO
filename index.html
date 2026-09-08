@@ -13,9 +13,9 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="robots" content="index, follow" />
   <meta name="google-site-verification" content="google2dcb20703f047c58" />
-  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
   <link rel="canonical" href="https://cadjame-f-portfolio.vercel.app/" />
-  <link rel="preload" as="image" href="./assets/florentin-cadjame.jpg" />
+  <link rel="preload" as="image" href="./florentin-cadjame.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
@@ -120,24 +120,31 @@
     .nav-links { display: none; align-items: center; gap: 1.75rem; list-style: none; margin: 0; padding: 0; }
     .nav-links a { position: relative; font-size: .875rem; color: var(--muted-foreground); transition: color .2s; }
     .nav-links a:hover { color: var(--primary); }
-    .nav-links a::after { content: ""; position: absolute; left: 0; bottom: -6px; height: 1px; width: 0; background: var(--primary); transition: width .2s; }
+    .nav-links a::after { content: ""; position: absolute; left: 0; bottom: -6px; height: 1px; width: 0; background: var(--primary); transition: width .25s cubic-bezier(.22,1,.36,1); }
     .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--primary); }
+    .nav-links a.active::after { width: 100%; }
     .nav-actions { display: none; align-items: center; gap: .5rem; }
     .icon-btn {
       display: inline-flex; align-items: center; justify-content: center;
       border: 1px solid var(--border); border-radius: var(--radius-md);
       color: var(--muted-foreground); background: transparent;
-      transition: color .2s, border-color .2s;
+      transition: color .25s, border-color .25s, transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
     }
-    .icon-btn:hover { color: var(--primary); border-color: color-mix(in oklab, var(--primary) 40%, transparent); }
+    .icon-btn:hover { color: var(--primary); border-color: color-mix(in oklab, var(--primary) 60%, transparent); transform: translateY(-2px) scale(1.06); box-shadow: 0 6px 18px -8px var(--glow); }
+    .icon-btn:active { transform: scale(.9); }
     .lang-btn {
       display: inline-flex; align-items: center; gap: .375rem;
       border: 1px solid var(--border); border-radius: var(--radius-md);
       padding: .5rem .625rem; font-family: var(--font-mono); font-size: .75rem;
       font-weight: 500; color: var(--muted-foreground); background: transparent;
-      transition: color .2s, border-color .2s;
+      transition: color .25s, border-color .25s, transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
     }
-    .lang-btn:hover { color: var(--primary); border-color: color-mix(in oklab, var(--primary) 40%, transparent); }
+    .lang-btn:hover { color: var(--primary); border-color: color-mix(in oklab, var(--primary) 60%, transparent); transform: translateY(-2px) scale(1.06); box-shadow: 0 6px 18px -8px var(--glow); }
+    .lang-btn:active { transform: scale(.9); }
+    .lang-btn .flip { display: inline-block; transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
+    .lang-btn.pop .flip { transform: rotateX(360deg); }
+    .icon-btn.sq.pop svg { animation: icon-spin .45s cubic-bezier(.22,1,.36,1); display: inline-block; }
     .icon-btn.sq { padding: .625rem; }
     .nav-mobile-actions { display: flex; align-items: center; gap: .5rem; }
     #menu-btn { display: inline-flex; }
@@ -149,6 +156,7 @@
     #mobile-menu.open { display: block; }
     #mobile-menu a { display: block; padding: .625rem 0; font-size: .875rem; color: var(--muted-foreground); transition: color .2s; }
     #mobile-menu a:hover { color: var(--primary); }
+    #mobile-menu a.active { color: var(--primary); }
 
     .hero { position: relative; overflow: hidden; padding: 8rem 0 6rem; scroll-margin-top: 4rem; }
     @media (min-width: 640px) { .hero { padding-top: 10rem; } }
@@ -356,6 +364,7 @@
     .reveal[data-visible="true"] { opacity: 1; transform: none; }
 
     @keyframes caret { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+    @keyframes icon-spin { from { transform: rotate(0deg) scale(.7); } to { transform: rotate(360deg) scale(1); } }
 
     .svg-inline { width: 1em; height: 1em; display: inline-block; vertical-align: -.125em; }
 
@@ -401,13 +410,13 @@
       <div class="nav-actions">
         <button id="lang-toggle" class="lang-btn" type="button" aria-label="Changer de langue">
           <svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          <span id="lang-label">FR</span>
+          <span id="lang-label" class="flip">FR</span>
         </button>
         <button class="icon-btn sq" id="theme-toggle" type="button" aria-label="Changer de theme"></button>
       </div>
       <div class="nav-mobile-actions">
         <button class="lang-btn" id="lang-toggle-mobile" type="button" aria-label="Changer de langue">
-          <span id="lang-label-mobile">FR</span>
+          <span id="lang-label-mobile" class="flip">FR</span>
         </button>
         <button class="icon-btn sq" id="theme-toggle-mobile" type="button" aria-label="Changer de theme"></button>
         <button class="icon-btn sq" id="menu-btn" type="button" aria-label="Ouvrir le menu">
@@ -432,7 +441,7 @@
           </div>
           <p class="hero-intro" id="hero-intro">Je conçois, j'exploite et je securise les infrastructures informatiques - du reseau au datacentre virtualise, jusqu'a la detection des menaces.</p>
           <div class="btn-row">
-            <a class="btn btn-primary" id="cv-btn" href="./assets/cv-florentin-cadjame.pdf" download>
+            <a class="btn btn-primary" id="cv-btn" href="./cv-florentin-cadjame.pdf" download>
               <svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
               <span id="cv-btn-text">Telecharger mon CV</span>
             </a>
@@ -465,7 +474,7 @@
         </div>
         <div class="profile-wrap">
           <div class="profile-img">
-            <img src="./assets/florentin-cadjame.jpg" alt="Ingenieur Systemes, Reseaux &amp; Cybersecurite" width="768" height="768" />
+            <img src="./florentin-cadjame.jpg" alt="Ingenieur Systemes, Reseaux &amp; Cybersecurite" width="768" height="768" />
           </div>
         </div>
       </div>
@@ -586,7 +595,7 @@
                   <a href="https://www.linkedin.com/in/florentin-cadjame-48a0aa111/" target="_blank" rel="noreferrer" id="linkedin-profile">Profil LinkedIn</a>
                 </li>
               </ul>
-              <a class="cv-link" href="./assets/cv-florentin-cadjame.pdf" download>
+              <a class="cv-link" href="./cv-florentin-cadjame.pdf" download>
                 <svg class="svg-inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                 <span id="cv-link-text">Telecharger le CV en PDF</span>
               </a>
@@ -619,7 +628,7 @@
     (function () {
       "use strict";
 
-      var CV = "./assets/cv-florentin-cadjame.pdf";
+      var CV = "./cv-florentin-cadjame.pdf";
       var LINKEDIN = "https://www.linkedin.com/in/florentin-cadjame-48a0aa111/";
       var WHATSAPP = "https://wa.me/33745694758";
 
@@ -994,7 +1003,13 @@
         document.documentElement.classList.toggle("light", !isLight);
         document.documentElement.classList.toggle("dark", isLight);
         try { localStorage.setItem("fc-portfolio-theme", !isLight ? "light" : "dark"); } catch (e) {}
+        var btns = document.querySelectorAll("#theme-toggle, #theme-toggle-mobile");
         paintThemeBtns();
+        btns.forEach(function (b) {
+          b.classList.remove("pop");
+          void b.offsetWidth;
+          b.classList.add("pop");
+        });
       }
 
       function closeMenu() {
@@ -1055,6 +1070,21 @@
         document.getElementById("scroll-progress").style.width = pct + "%";
         document.getElementById("site-header").classList.toggle("scrolled", window.scrollY > 24);
         document.getElementById("back-top").classList.toggle("show", window.scrollY > 600);
+        updateActiveNav();
+      }
+
+      function updateActiveNav() {
+        var ids = ["accueil", "apropos", "experiences", "formations", "competences", "realisations", "contact"];
+        var pos = window.scrollY + Math.max(120, window.innerHeight * 0.28);
+        var current = ids[0];
+        for (var i = 0; i < ids.length; i++) {
+          var sec = document.getElementById(ids[i]);
+          if (sec && sec.offsetTop <= pos) current = ids[i];
+        }
+        var links = document.querySelectorAll(".nav-links a, #mobile-menu a");
+        links.forEach(function (a) {
+          a.classList.toggle("active", (a.getAttribute("href") || "") === "#" + current);
+        });
       }
 
       function toggleLang() {
@@ -1062,6 +1092,12 @@
         try { localStorage.setItem("fc-portfolio-lang", lang); } catch (e) {}
         applyLang();
         restartTyping();
+        var btns = document.querySelectorAll("#lang-toggle, #lang-toggle-mobile");
+        btns.forEach(function (b) {
+          b.classList.remove("pop");
+          void b.offsetWidth;
+          b.classList.add("pop");
+        });
       }
 
       function init() {
